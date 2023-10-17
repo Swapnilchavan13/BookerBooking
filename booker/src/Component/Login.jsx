@@ -59,7 +59,7 @@ export const Login = ({ authenticated, setAuthenticated, setUser }) => {
         value={loginData.password}
         onChange={handleInputChange}
       />
-      <button onClick={handleLogin}>Login</button>
+      <button className='loginbtn' onClick={handleLogin}>Login</button>
       {authenticated && <p>Login successful! You can access the home page now.</p>}
     </div>
   );

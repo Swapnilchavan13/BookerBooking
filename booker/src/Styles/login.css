@@ -25,7 +25,7 @@
     border-radius: 5px;
   }
   
-  button {
+  .loginbtn {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -36,7 +36,7 @@
     font-size: 16px;
   }
   
-  button:hover {
+  .loginbtn:hover {
     background-color: #0056b3;
   }
   
