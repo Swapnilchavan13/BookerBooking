@@ -106,6 +106,7 @@ console.log(formattedString);
         <div>
           <h3>Movie: {selectedMovie}</h3>
           <h4>Showtimes:</h4>
+          <div className='showdiv'>
           {filteredMovies
             .find((movie) => movie.date === selectedDate)
             .movieData[selectedMovie].map((showtime) => (
@@ -123,6 +124,7 @@ console.log(formattedString);
               </div>
               </div>
             ))}
+            </div>
             <Booking />
         </div>
       )}
