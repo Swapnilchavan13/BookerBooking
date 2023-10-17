@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../Styles/login.css'; // Import the CSS file
+import '../Styles/login.css';
 
-export const Login = ({ authenticated, setAuthenticated, setUser }) => {
+export const Login = () => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     loginId: '',
     password: '',
   });
+
+  // Check if the user is already authenticated on component mount
+  const [authenticated, setAuthenticated] = useState(localStorage.getItem('authenticated') === 'true');
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || {});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,6 +35,10 @@ export const Login = ({ authenticated, setAuthenticated, setUser }) => {
         setAuthenticated(true);
         setUser(validUser); // Pass the user data to the Home component
         navigate('/home');
+        // Store authentication state and user data in localStorage
+        localStorage.setItem('authenticated', 'true');
+        localStorage.setItem('user', JSON.stringify(validUser));
+        window.location.reload(false)
       } else {
         alert('Login failed. Please check your credentials.');
         navigate('/login');

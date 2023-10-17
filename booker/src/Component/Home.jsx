@@ -8,8 +8,15 @@ export const Home = ({ user, onLogout }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedShowtime, setSelectedShowtime] = useState(null);
+  const [authenticated, setAuthenticated] = useState(false); // Initialize as not authenticated
 
   useEffect(() => {
+    // Check if the user is already authenticated on component mount
+    const isAuthenticated = localStorage.getItem('authenticated') === 'true';
+    if (isAuthenticated) {
+      setAuthenticated(true);
+    }
+
     // Fetch data from your API endpoint
     fetch('http://localhost:3005/allocatedata')
       .then((response) => response.json())
@@ -22,6 +29,7 @@ export const Home = ({ user, onLogout }) => {
         console.error('Error fetching data:', error);
       });
   }, [user.name]);
+
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -42,6 +50,14 @@ export const Home = ({ user, onLogout }) => {
   const handleShowtimeSelect = (showtime) => {
     setSelectedShowtime(showtime);
   };
+
+  const handleLogout = () => {
+    // Clear authentication state in localStorage
+    localStorage.setItem('authenticated', 'false');
+    // Continue with your logout logic
+    onLogout();
+  };
+  
 
   // Filter out dates less than today's date
   const currentDate = new Date();
