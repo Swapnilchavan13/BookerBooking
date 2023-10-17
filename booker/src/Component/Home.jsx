@@ -125,6 +125,7 @@ console.log(formattedString);
               </div>
             ))}
             </div>
+            
             <Booking />
         </div>
       )}

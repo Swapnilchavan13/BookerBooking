@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../Styles/booking.css';
 
 const Seat = ({ seatNumber, isSelected, isBooked, onSelect }) => {
@@ -24,10 +23,7 @@ const Seat = ({ seatNumber, isSelected, isBooked, onSelect }) => {
 };
 
 export const Booking = () => {
-  const navigate = useNavigate();
-  const seatPrice = 100;
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const [bookedSeats, setBookedSeats] = useState([]);
 
   const seatsLayout = [
     ['A', 6],
@@ -86,7 +82,7 @@ export const Booking = () => {
                 key={seatNumber}
                 seatNumber={row + (seatNumber + 1)}
                 isSelected={selectedSeats.includes(row + (seatNumber + 1))}
-                isBooked={bookedSeats.includes(row + (seatNumber + 1))}
+                // isBooked={bookedSeats.includes(row + (seatNumber + 1))}
                 onSelect={handleSeatSelect}
               />
             ))}

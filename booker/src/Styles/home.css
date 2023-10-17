@@ -53,7 +53,8 @@ button:hover {
 
 .mvbtn {
     margin: auto;
-    background-color: #0056b3;
+    background-color: #85a0bd;
+    color: #0f0f0f;
 }
 
 .mvdiv button {
