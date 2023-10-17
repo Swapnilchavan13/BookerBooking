@@ -28,6 +28,7 @@ export const Home = ({ user, onLogout }) => {
 
   const handleDateSelect = (date) => {
     setSelectedDate(date);
+    setSelectedMovie(null); // Clear selected movie when a new date is selected.
   };
 
   const handleMovieSelect = (movieName) => {
@@ -59,17 +60,16 @@ export const Home = ({ user, onLogout }) => {
         {dateButtons}
       </div>
 
-      {filteredMovies.length > 0 ? (
+      {selectedDate && (
         <div>
           <h2>Movies on {formatDate(selectedDate)} in {user.name}:</h2>
           {filteredMovies.map((movie) => (
             <div className='mvdiv' key={movie._id}>
-              {/* <h4>Date: {formatDate(movie.date)}</h4> */}
               {Object.keys(movie.movieData).map((movieName) => (
                 <button
                   key={movieName}
                   onClick={() => handleMovieSelect(movieName)}
-                  className='mvbtn'
+                  className={selectedMovie === movieName ? 'active-movie' : 'mvbtn'}
                 >
                   {movieName}
                 </button>
@@ -77,8 +77,6 @@ export const Home = ({ user, onLogout }) => {
             </div>
           ))}
         </div>
-      ) : (
-        <p>No movies available for {user.name} on the selected date.</p>
       )}
 
       {selectedMovie && (
