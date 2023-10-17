@@ -92,8 +92,6 @@ console.log(formattedString);
       <h4>Your rows: {user.rows.map((row) => row.option).join(', ')}</h4>
       <h4>Your Number Of Seats: {user.rows.map((row) => row.seats).join(', ')}</h4>
 
-      
-
       <div className="date-buttons">
         <h4>Select a date:</h4>
         {dateButtons}
