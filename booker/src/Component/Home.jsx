@@ -6,6 +6,7 @@ export const Home = ({ user, onLogout }) => {
   const [movieData, setMovieData] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [selectedShowtime, setSelectedShowtime] = useState(null);
 
   useEffect(() => {
     // Fetch data from your API endpoint
@@ -29,16 +30,22 @@ export const Home = ({ user, onLogout }) => {
   const handleDateSelect = (date) => {
     setSelectedDate(date);
     setSelectedMovie(null); // Clear selected movie when a new date is selected.
+    setSelectedShowtime(null); // Clear selected showtime when a new date is selected.
   };
 
   const handleMovieSelect = (movieName) => {
     setSelectedMovie(movieName);
+    setSelectedShowtime(null); // Clear selected showtime when a new movie is selected.
+  };
+
+  const handleShowtimeSelect = (showtime) => {
+    setSelectedShowtime(showtime);
   };
 
   // Filter out dates less than today's date
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 1);
-    const dateButtons = movieData
+  const dateButtons = movieData
     .filter((movie) => new Date(movie.date) >= currentDate)
     .map((movie) => (
       <button
@@ -92,7 +99,14 @@ export const Home = ({ user, onLogout }) => {
             .find((movie) => movie.date === selectedDate)
             .movieData[selectedMovie].map((showtime) => (
               <div key={showtime}>
-                <input type="checkbox" id={showtime} name={showtime} value={showtime} />
+                <input
+                  type="radio"
+                  id={showtime}
+                  name="showtime"
+                  value={showtime}
+                  checked={selectedShowtime === showtime}
+                  onChange={() => handleShowtimeSelect(showtime)}
+                />
                 <label htmlFor={showtime}>{showtime}</label>
               </div>
             ))}
