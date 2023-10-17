@@ -193,6 +193,10 @@
       padding: 30px;
       width: 150px;
     }
+
+    .isBooked{
+        background-color: blue;
+    }
     
     .dateandshow{
       width: 90%;

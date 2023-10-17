@@ -3,13 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import '../Styles/booking.css';
 
 const Seat = ({ seatNumber, isSelected, isBooked, onSelect }) => {
-  const seatClassName = isSelected ? 'seat selected' : isBooked ? 'seat booked' : 'seat';
+  const seatClassName = isSelected
+    ? 'seat selected'
+    : isBooked
+    ? 'seat booked'
+    : 'seat';
 
   const handleClick = () => {
     if (!isBooked) {
       onSelect(seatNumber);
     }
   };
+
 
   return (
     <div className={seatClassName} onClick={handleClick}>
@@ -59,7 +64,7 @@ export const Booking = () => {
     // Save the updated selected seats to local storage
     saveSelectedSeatsToLocalStorage(selectedSeats);
   };
-
+  
   const BookTicket = () => {
     if (selectedSeats.length > 0) {
       // Save the selected seats to local storage when the "Book Tickets" button is clicked
@@ -70,7 +75,6 @@ export const Booking = () => {
     }
   };
   
-
   return (
     <div className="booking-system">
       <div className="seats">

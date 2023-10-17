@@ -58,6 +58,14 @@ export const Home = ({ user, onLogout }) => {
       </button>
     ));
 
+// Create an array in the desired format
+const formattedData = user.rows.map((row) => [row.option, row.seats]);
+// To save it as a string in the format you mentioned:
+const formattedString = JSON.stringify(formattedData);
+
+console.log(formattedString);
+
+
   const filteredMovies = movieData.filter((movie) => movie.date === selectedDate);
 
   return (
@@ -67,6 +75,8 @@ export const Home = ({ user, onLogout }) => {
       <h4>Your cinema name: {user.name}</h4>
       <h4>Your rows: {user.rows.map((row) => row.option).join(', ')}</h4>
       <h4>Your Number Of Seats: {user.rows.map((row) => row.seats).join(', ')}</h4>
+
+      
 
       <div className="date-buttons">
         <h4>Select a date:</h4>
