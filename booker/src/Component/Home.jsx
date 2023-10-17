@@ -35,15 +35,20 @@ export const Home = ({ user, onLogout }) => {
     setSelectedMovie(movieName);
   };
 
-  const dateButtons = movieData.map((movie) => (
-    <button
-      key={movie.date}
-      onClick={() => handleDateSelect(movie.date)}
-      className={selectedDate === movie.date ? 'active' : ''}
-    >
-      {formatDate(movie.date)} {/* Format the date to display only the day */}
-    </button>
-  ));
+  // Filter out dates less than today's date
+  const currentDate = new Date();
+  currentDate.setDate(currentDate.getDate() - 1);
+    const dateButtons = movieData
+    .filter((movie) => new Date(movie.date) >= currentDate)
+    .map((movie) => (
+      <button
+        key={movie.date}
+        onClick={() => handleDateSelect(movie.date)}
+        className={selectedDate === movie.date ? 'active' : ''}
+      >
+        {formatDate(movie.date)} {/* Format the date to display only the day */}
+      </button>
+    ));
 
   const filteredMovies = movieData.filter((movie) => movie.date === selectedDate);
 
@@ -69,7 +74,7 @@ export const Home = ({ user, onLogout }) => {
                 <button
                   key={movieName}
                   onClick={() => handleMovieSelect(movieName)}
-                  className={selectedMovie === movieName ? 'active-movie' : 'mvbtn'}
+                  className={selectedMovie === movieName ? 'active' : 'mvbtn'}
                 >
                   {movieName}
                 </button>
