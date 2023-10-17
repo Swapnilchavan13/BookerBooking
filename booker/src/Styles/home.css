@@ -8,34 +8,22 @@
     margin: 0 auto;
 }
 
+#showtm{
+    display: flex;
+}
+
 .date-buttons {
     display: flex;
-    gap: 20px;
+    text-align: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .date-buttons>button {
     width: 60px;
     color: black;
-}
-
-h1 {
-    font-size: 24px;
-    color: #333;
-}
-
-h2 {
-    font-size: 20px;
-    color: #333;
-}
-
-h3 {
-    font-size: 18px;
-    color: #333;
-}
-
-h4 {
-    font-size: 16px;
-    color: #666;
+    margin: auto;
+    font-size: 15px;
 }
 
 label {

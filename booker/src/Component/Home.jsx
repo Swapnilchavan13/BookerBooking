@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/home.css';
+import { Booking } from './Booking';
 
 export const Home = ({ user, onLogout }) => {
   const [movieData, setMovieData] = useState([]);
@@ -98,6 +99,7 @@ export const Home = ({ user, onLogout }) => {
           {filteredMovies
             .find((movie) => movie.date === selectedDate)
             .movieData[selectedMovie].map((showtime) => (
+                <div id='showtm'>
               <div key={showtime}>
                 <input
                   type="radio"
@@ -109,7 +111,9 @@ export const Home = ({ user, onLogout }) => {
                 />
                 <label htmlFor={showtime}>{showtime}</label>
               </div>
+              </div>
             ))}
+            <Booking />
         </div>
       )}
 
