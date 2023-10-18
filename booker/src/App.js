@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Login } from './Component/Login';
 import { Home } from './Component/Home';
 import { useState, useEffect } from 'react';
+import { Details } from './Component/Details';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -52,6 +53,7 @@ function App() {
             )
           }
         />
+        <Route path='/details' element={<Details />} />
       </Routes>
     </BrowserRouter>
   );

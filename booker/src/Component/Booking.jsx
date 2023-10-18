@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Styles/booking.css';
+import { useNavigate } from 'react-router-dom';
 
-const Seat = ({ seatNumber, isSelected, isBooked, onSelect }) => {
+const Seat = ({ seatNumber, isSelected, isBooked, isSaved, onSelect }) => {
   const seatClassName = isSelected
     ? 'seat selected'
-    : isBooked
+    : isBooked || isSaved
     ? 'seat booked'
     : 'seat';
 
@@ -22,25 +23,17 @@ const Seat = ({ seatNumber, isSelected, isBooked, onSelect }) => {
 };
 
 export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, showtime }) => {
+  const navigate = useNavigate();
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [apiData, setApiData] = useState([]);
+
   const selected = movie.find((movie) => movie.moviename === selectedMovie);
 
-  // Function to save selected seats in local storage
-  const saveSelectedSeatsToLocalStorage = (seats) => {
-    localStorage.setItem('selectedSeats', JSON.stringify(seats));
-  };
-
-  // Function to load selected seats from local storage
-  const loadSelectedSeatsFromLocalStorage = () => {
-    const storedSeats = localStorage.getItem('selectedSeats');
-    if (storedSeats) {
-      setSelectedSeats(JSON.parse(storedSeats));
-    }
-  };
-
   useEffect(() => {
-    // Load selected seats from local storage when the component mounts
-    loadSelectedSeatsFromLocalStorage();
+    fetch('http://localhost:3005/bookingdata')
+      .then((response) => response.json())
+      .then((data) => setApiData(data))
+      .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
   // Function to handle seat selection
@@ -52,14 +45,25 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
     }
 
     // Save the updated selected seats to local storage
-    saveSelectedSeatsToLocalStorage(selectedSeats);
+    // saveSelectedSeatsToLocalStorage(selectedSeats);
+  };
+
+
+  const data = {
+    tname: user.name,
+    mname: selectedMovie,
+    sdate: selectedDate,
+    showtime: showtime,
+    seats: selectedSeats.sort(),
   };
 
   const BookTicket = () => {
     if (selectedSeats.length > 0) {
-      // Save the selected seats to local storage when the "Book Tickets" button is clicked
-      saveSelectedSeatsToLocalStorage(selectedSeats);
-      alert(`This Theatre ${user.name} this movie ${selectedMovie} this date ${selectedDate} this time ${showtime} This are Selected Seats ${selectedSeats}`);
+      alert(
+        `This Theatre ${user.name} this movie ${selectedMovie} this date ${selectedDate} this time ${showtime} This are Selected Seats ${selectedSeats}`
+      );
+      localStorage.setItem('data', JSON.stringify(data));
+      navigate('/details');
     } else {
       alert('Please select at least one seat.');
     }
@@ -73,7 +77,6 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
           <div>
             <h4>Selected Movie: {selectedMovie}</h4>
             <img width="350px" src={selected.poster} alt={selectedMovie} />
-            {/* Other content of your Booking component */}
           </div>
         ) : (
           <div>
@@ -81,34 +84,47 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
           </div>
         )}
         <br />
-        <div id='scr'>
-          <h3>Screen</h3>
-        </div>
+        <div id="scr">Screen</div>
         <br />
-
-        {/* Replace 'seatsLayout' with dynamic seat layout based on 'formattedString' */}
         {formatted.map(([row, count]) => (
           <div key={row} className="seat-row">
             <h3>{row}</h3>
-            {[...Array(count).keys()].map((seatNumber) => (
-              <Seat
-                key={seatNumber}
-                seatNumber={row + (seatNumber + 1)}
-                isSelected={selectedSeats.includes(row + (seatNumber + 1))}
-                onSelect={handleSeatSelect}
-              />
-            ))}
+            {[...Array(count).keys()].map((seatNumber) => {
+              const seatNumberStr = row + (seatNumber + 1);
+              const isBooked = selectedSeats.includes(seatNumberStr);
+              const isSaved = apiData.some((booking) =>
+                booking.tname === user.name &&
+                booking.mname === selectedMovie &&
+                booking.sdate === selectedDate &&
+                booking.showtime === showtime &&
+                booking.seats.includes(seatNumberStr)
+              );
+
+              return (
+                <Seat
+                  key={seatNumberStr}
+                  seatNumber={seatNumberStr}
+                  isSelected={selectedSeats.includes(seatNumberStr)}
+                  isBooked={isBooked}
+                  isSaved={isSaved}
+                  onSelect={handleSeatSelect}
+                />
+              );
+            })}
             <h3>{row}</h3>
           </div>
         ))}
       </div>
       <div>
         <h2>Selection:</h2>
-        {/* Display the selected seats here */}
         <div>{selectedSeats.join(', ')}</div>
       </div>
 
-      <button className="bookbutton" onClick={BookTicket} disabled={selectedSeats.length === 0}>
+      <button
+        className="bookbutton"
+        onClick={BookTicket}
+        disabled={selectedSeats.length === 0}
+      >
         Book Tickets
       </button>
     </div>

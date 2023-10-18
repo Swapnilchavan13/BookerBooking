@@ -43,11 +43,10 @@
     margin: auto;
   }
   
-  
   .booked {
     background-color: rgb(184, 7, 7);
     color: white;
-    cursor: not-allowed;
+    pointer-events: none;
   }
   
   .book {
@@ -96,8 +95,10 @@
   #scr{
     border: 5px solid rgb(190, 6, 6);
     width: 350px;
-    height: 40px;
+    height: 20px;
+    font-weight: bolder;
   }
+
   
   /* Mobile-responsive styles */
   
@@ -230,6 +231,4 @@
       text-align: center;
       justify-content: center;
     }
-   
-
   }
