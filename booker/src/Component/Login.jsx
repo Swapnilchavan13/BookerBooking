@@ -68,7 +68,7 @@ export const Login = () => {
         onChange={handleInputChange}
       />
       <button className='loginbtn' onClick={handleLogin}>Login</button>
-      {authenticated && <p>Login successful! You can access the home page now.</p>}
+      {authenticated}
     </div>
   );
 };

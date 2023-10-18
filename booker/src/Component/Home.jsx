@@ -23,8 +23,6 @@ useEffect(() => {
     });
 }, []);
 
-  
-
   useEffect(() => {
     // Check if the user is already authenticated on component mount
     const isAuthenticated = localStorage.getItem('authenticated') === 'true';
@@ -94,18 +92,17 @@ const formattedData = user.rows.map((row) => [row.option, row.seats]);
 // To save it as a string in the format you mentioned:
 const formattedString = JSON.stringify(formattedData);
 
-console.log(formattedString);
-
+const formatted = JSON.parse(formattedString);
 
   const filteredMovies = movieData.filter((movie) => movie.date === selectedDate);
 
   return (
     <div className="home-container">
       <h1>Welcome, {user.name}!</h1>
-      <h4>Your location: {user.location}</h4>
-      <h4>Your cinema name: {user.name}</h4>
-      <h4>Your rows: {user.rows.map((row) => row.option).join(', ')}</h4>
-      <h4>Your Number Of Seats: {user.rows.map((row) => row.seats).join(', ')}</h4>
+      <h4>Location: {user.location}</h4>
+      <h4>Cinema`s name: {user.name}</h4>
+      {/* <h4>Your rows: {user.rows.map((row) => row.option).join(', ')}</h4> */}
+      {/* <h4>Your Number Of Seats: {user.rows.map((row) => row.seats).join(', ')}</h4> */}
 
       <div className="date-buttons">
         <h4>Select a date:</h4>
@@ -155,7 +152,7 @@ console.log(formattedString);
             ))}
             </div>
             
-            <Booking selectedMovie={selectedMovie} movie={movie} />
+            <Booking selectedMovie={selectedMovie} movie={movie} formatted={formatted}/>
         </div>
       )}
 

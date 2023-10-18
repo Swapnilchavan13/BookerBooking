@@ -14,7 +14,6 @@ const Seat = ({ seatNumber, isSelected, isBooked, onSelect }) => {
     }
   };
 
-
   return (
     <div className={seatClassName} onClick={handleClick}>
       {seatNumber}
@@ -22,15 +21,9 @@ const Seat = ({ seatNumber, isSelected, isBooked, onSelect }) => {
   );
 };
 
-export const Booking = ({ selectedMovie, movie }) => {
+export const Booking = ({ selectedMovie, movie, formatted }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const selected = movie.find((movie) => movie.moviename === selectedMovie);
-
-  const seatsLayout = [
-    ['A', 6],
-    ['B', 7],
-    ['C', 8],
-  ];
 
   // Function to save selected seats in local storage
   const saveSelectedSeatsToLocalStorage = (seats) => {
@@ -61,7 +54,7 @@ export const Booking = ({ selectedMovie, movie }) => {
     // Save the updated selected seats to local storage
     saveSelectedSeatsToLocalStorage(selectedSeats);
   };
-  
+
   const BookTicket = () => {
     if (selectedSeats.length > 0) {
       // Save the selected seats to local storage when the "Book Tickets" button is clicked
@@ -71,29 +64,30 @@ export const Booking = ({ selectedMovie, movie }) => {
       alert('Please select at least one seat.');
     }
   };
-  
+
   return (
     <div className="booking-system">
       <div className="seats">
-      <h4>Selected Movie in Booking: {selectedMovie}</h4>
-      {selected ? (
-        <div>
-          <h4>Selected Movie: {selectedMovie}</h4>
-          <img width="350px" src={selected.poster} alt={selectedMovie} />
-          {/* Other content of your Booking component */}
+        <h4>Selected Movie in Booking: {selectedMovie}</h4>
+        {selected ? (
+          <div>
+            <h4>Selected Movie: {selectedMovie}</h4>
+            <img width="350px" src={selected.poster} alt={selectedMovie} />
+            {/* Other content of your Booking component */}
+          </div>
+        ) : (
+          <div>
+            <h4>No movie data found for {selectedMovie}</h4>
+          </div>
+        )}
+        <br />
+        <div id='scr'>
+          <h3>Screen</h3>
         </div>
-      ) : (
-        <div>
-          <h4>No movie data found for {selectedMovie}</h4>
-        </div>
-      )}
-<br />
-      <div id='scr'>
-        <h3>Screen</h3>
-      </div>
-      <br />
+        <br />
 
-        {seatsLayout.map(([row, count]) => (
+        {/* Replace 'seatsLayout' with dynamic seat layout based on 'formattedString' */}
+        {formatted.map(([row, count]) => (
           <div key={row} className="seat-row">
             <h3>{row}</h3>
             {[...Array(count).keys()].map((seatNumber) => (
@@ -101,7 +95,6 @@ export const Booking = ({ selectedMovie, movie }) => {
                 key={seatNumber}
                 seatNumber={row + (seatNumber + 1)}
                 isSelected={selectedSeats.includes(row + (seatNumber + 1))}
-                // isBooked={bookedSeats.includes(row + (seatNumber + 1))}
                 onSelect={handleSeatSelect}
               />
             ))}
