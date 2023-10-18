@@ -22,8 +22,9 @@ const Seat = ({ seatNumber, isSelected, isBooked, onSelect }) => {
   );
 };
 
-export const Booking = () => {
+export const Booking = ({ selectedMovie, movie }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const selected = movie.find((movie) => movie.moviename === selectedMovie);
 
   const seatsLayout = [
     ['A', 6],
@@ -74,6 +75,19 @@ export const Booking = () => {
   return (
     <div className="booking-system">
       <div className="seats">
+      <h4>Selected Movie in Booking: {selectedMovie}</h4>
+      {selected ? (
+        <div>
+          <h4>Selected Movie: {selectedMovie}</h4>
+          <img width="350px" src={selected.poster} alt={selectedMovie} />
+          {/* Other content of your Booking component */}
+        </div>
+      ) : (
+        <div>
+          <h4>No movie data found for {selectedMovie}</h4>
+        </div>
+      )}
+
         {seatsLayout.map(([row, count]) => (
           <div key={row} className="seat-row">
             <h3>{row}</h3>

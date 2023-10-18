@@ -9,6 +9,21 @@ export const Home = ({ user, onLogout }) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedShowtime, setSelectedShowtime] = useState(null);
   const [authenticated, setAuthenticated] = useState(false); // Initialize as not authenticated
+  const [movie, setMovie] = useState([]);
+
+useEffect(() => {
+  // Fetch data from your API endpoint
+  fetch('http://localhost:3005/moviedata')
+    .then((response) => response.json())
+    .then((data) => {
+      setMovie(data);
+    })
+    .catch((error) => {
+      console.error('Error fetching movie data:', error);
+    });
+}, []);
+
+  
 
   useEffect(() => {
     // Check if the user is already authenticated on component mount
@@ -140,7 +155,7 @@ console.log(formattedString);
             ))}
             </div>
             
-            <Booking />
+            <Booking selectedMovie={selectedMovie} movie={movie} />
         </div>
       )}
 
