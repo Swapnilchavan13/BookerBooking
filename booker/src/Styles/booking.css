@@ -92,8 +92,12 @@
     text-align: center;
     border: 3px solid black;
   }
-  
-  
+
+  #scr{
+    border: 5px solid rgb(190, 6, 6);
+    width: 350px;
+    height: 40px;
+  }
   
   /* Mobile-responsive styles */
   
@@ -178,7 +182,7 @@
       background-color: rgb(138, 233, 138);
       padding: 7px;
     }
-  
+
     table {
       font-size: 14px;
     }

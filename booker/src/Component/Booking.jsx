@@ -87,6 +87,11 @@ export const Booking = ({ selectedMovie, movie }) => {
           <h4>No movie data found for {selectedMovie}</h4>
         </div>
       )}
+<br />
+      <div id='scr'>
+        <h3>Screen</h3>
+      </div>
+      <br />
 
         {seatsLayout.map(([row, count]) => (
           <div key={row} className="seat-row">
