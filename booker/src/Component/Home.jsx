@@ -152,7 +152,7 @@ const formatted = JSON.parse(formattedString);
             ))}
             </div>
             
-            <Booking selectedMovie={selectedMovie} movie={movie} formatted={formatted}/>
+            <Booking selectedMovie={selectedMovie} movie={movie} formatted={formatted} user={user} showtime={selectedShowtime} selectedDate={selectedDate}/>
         </div>
       )}
 

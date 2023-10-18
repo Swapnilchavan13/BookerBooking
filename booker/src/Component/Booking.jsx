@@ -21,7 +21,7 @@ const Seat = ({ seatNumber, isSelected, isBooked, onSelect }) => {
   );
 };
 
-export const Booking = ({ selectedMovie, movie, formatted }) => {
+export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, showtime }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const selected = movie.find((movie) => movie.moviename === selectedMovie);
 
@@ -48,7 +48,7 @@ export const Booking = ({ selectedMovie, movie, formatted }) => {
     if (selectedSeats.includes(seatNumber)) {
       setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
     } else {
-      setSelectedSeats([...selectedSeats, seatNumber]);
+      setSelectedSeats([...selectedSeats.sort(), seatNumber]);
     }
 
     // Save the updated selected seats to local storage
@@ -59,7 +59,7 @@ export const Booking = ({ selectedMovie, movie, formatted }) => {
     if (selectedSeats.length > 0) {
       // Save the selected seats to local storage when the "Book Tickets" button is clicked
       saveSelectedSeatsToLocalStorage(selectedSeats);
-      alert('Work In Progress');
+      alert(`This Theatre ${user.name} this movie ${selectedMovie} this date ${selectedDate} this time ${showtime} This are Selected Seats ${selectedSeats}`);
     } else {
       alert('Please select at least one seat.');
     }
