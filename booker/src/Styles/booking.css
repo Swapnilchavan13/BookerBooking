@@ -47,26 +47,7 @@
     background-color: rgb(184, 7, 7);
     color: white;
     pointer-events: none;
-  }
-  
-  .book {
-    background-color: rgb(187, 7, 7);
-    width: 50px;
-    height: 40px;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: auto;
-  }
-  
-  .available {
-    color: transparent;
-    width: 50px;
-    height: 40px;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: auto;
-  }
-  
+  }  
   .selectdate{
     border: 1px solid rgb(88, 87, 87);
     padding: 30px;
@@ -98,7 +79,11 @@
     height: 20px;
     font-weight: bolder;
   }
-
+ 
+  .deselected {
+    background-color: transparent;
+    color: black;
+  }
   
   /* Mobile-responsive styles */
   

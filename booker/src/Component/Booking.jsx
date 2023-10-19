@@ -3,14 +3,18 @@ import '../Styles/booking.css';
 import { useNavigate } from 'react-router-dom';
 
 const Seat = ({ seatNumber, isSelected, isBooked, isSaved, onSelect }) => {
+  // Determine the initial class based on isSelected and isSaved
   const seatClassName = isSelected
     ? 'seat selected'
-    : isBooked || isSaved
+    : isSaved
     ? 'seat booked'
     : 'seat';
 
   const handleClick = () => {
     if (!isBooked) {
+      onSelect(seatNumber);
+    } else {
+      // Toggle the isSelected state for the clicked seat
       onSelect(seatNumber);
     }
   };
@@ -22,12 +26,14 @@ const Seat = ({ seatNumber, isSelected, isBooked, isSaved, onSelect }) => {
   );
 };
 
+
 export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, showtime }) => {
   const navigate = useNavigate();
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [apiData, setApiData] = useState([]);
 
-  const selected = movie.find((movie) => movie.moviename === selectedMovie);
+  const selectedmv = movie.find((movie) => movie.moviename === selectedMovie);
+
 
   useEffect(() => {
     fetch('http://localhost:3005/bookingdata')
@@ -36,25 +42,22 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
-  // Function to handle seat selection
   const handleSeatSelect = (seatNumber) => {
     if (selectedSeats.includes(seatNumber)) {
+      // If the seat is already selected, deselect it
       setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
     } else {
-      setSelectedSeats([...selectedSeats.sort(), seatNumber]);
+      // If the seat is not selected, select it
+      setSelectedSeats([...selectedSeats, seatNumber]);
     }
-
-    // Save the updated selected seats to local storage
-    // saveSelectedSeatsToLocalStorage(selectedSeats);
   };
-
 
   const data = {
     tname: user.name,
     mname: selectedMovie,
     sdate: selectedDate,
     showtime: showtime,
-    seats: selectedSeats.sort(),
+    seats: selectedSeats,
   };
 
   const BookTicket = () => {
@@ -73,10 +76,10 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
     <div className="booking-system">
       <div className="seats">
         <h4>Selected Movie in Booking: {selectedMovie}</h4>
-        {selected ? (
+        {selectedmv ? (
           <div>
             <h4>Selected Movie: {selectedMovie}</h4>
-            <img width="350px" src={selected.poster} alt={selectedMovie} />
+            <img width="350px" src={selectedmv.poster} alt={selectedMovie} />
           </div>
         ) : (
           <div>
@@ -102,13 +105,13 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
 
               return (
                 <Seat
-                  key={seatNumberStr}
-                  seatNumber={seatNumberStr}
-                  isSelected={selectedSeats.includes(seatNumberStr)}
-                  isBooked={isBooked}
-                  isSaved={isSaved}
-                  onSelect={handleSeatSelect}
-                />
+                key={seatNumberStr}
+                seatNumber={seatNumberStr}
+                isSelected={selectedSeats.includes(seatNumberStr)}
+                isBooked={isBooked}
+                isSaved={isSaved}
+                onSelect={handleSeatSelect}
+              />  
               );
             })}
             <h3>{row}</h3>
@@ -129,4 +132,4 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
       </button>
     </div>
   );
-};
+}
