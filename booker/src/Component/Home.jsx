@@ -93,7 +93,9 @@ const formattedString = JSON.stringify(formattedData);
 
 const formatted = JSON.parse(formattedString);
 
-  const filteredMovies = movieData.filter((movie) => movie.date === selectedDate);
+const filteredMovies = movieData.filter((movie) => movie.date === selectedDate);
+
+const currTime = new Date().getHours();
 
   return (
     <div className="home-container">
@@ -133,7 +135,7 @@ const formatted = JSON.parse(formattedString);
           {filteredMovies
             .find((movie) => movie.date === selectedDate)
             .movieData[selectedMovie].map((showtime) => (
-                <div id='showtm'>
+            <div id='showtm'>
               <div key={showtime}>
                 <input
                   type="radio"
@@ -142,7 +144,13 @@ const formatted = JSON.parse(formattedString);
                   value={showtime}
                   checked={selectedShowtime === showtime}
                   onChange={() => handleShowtimeSelect(showtime)}
-                />
+                  disabled={
+                 showtime === "9:00 AM" && 9 < currTime
+                || showtime === "12:00 PM" && 12 <= currTime 
+                || showtime === "3:00 PM" && 15 <= currTime 
+                || showtime === "6:00 PM" && 18 <= currTime
+                || showtime === "9:00 PM" && 21 <= currTime
+              } />
                 <label htmlFor={showtime}>{showtime}</label>
               </div>
               </div>
