@@ -56,6 +56,8 @@ export const Details = () => {
           <h4>Show Date: {savedData.sdate}</h4>
           <h4>Show Time: {savedData.showtime}</h4>
           <h4>Seats: {savedData.seats.join(', ')}</h4>
+          <h4>Total: Rs.{savedData.seats.length * 100} /-</h4>
+
           <img width="300px" height="350px" src="qrcode.jpeg" alt="" />
           <br />
           <button onClick={handleConfirmClick}>Confirm And Pay</button>
@@ -65,12 +67,14 @@ export const Details = () => {
 {isModalOpen && (
   <div className="popup">
     <div className="popup-content">
-      <h2>Ticket Information</h2>
+      <h2>Ticket Booking Details</h2>
       <h4>Theater Name: {savedData.tname}</h4>
       <h4>Movie Name: {savedData.mname}</h4>
       <h4>Show Date: {savedData.sdate}</h4>
       <h4>Show Time: {savedData.showtime}</h4>
       <h4>Seats: {savedData.seats.join(', ')}</h4>
+      <h4>Total: Rs.{savedData.seats.length * 100} /-</h4>
+
       <button onClick={handlePrintClick}>Print Ticket</button> <br />
       <button onClick={handleCancel}>Cancel</button>
     </div>

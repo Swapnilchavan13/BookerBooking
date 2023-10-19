@@ -120,8 +120,12 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
         ))}
       </div>
       <div>
-        <h2>Selection:</h2>
-        <div>{selectedSeats.join(', ')}</div>
+        <div>
+          <h5>Selected Seats : {selectedSeats.join(', ')}</h5>
+          <h5>Total Amount : Rs. {selectedSeats.length * 100} /-</h5>
+
+          </div>
+
       </div>
 
       <button

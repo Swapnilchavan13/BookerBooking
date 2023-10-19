@@ -127,41 +127,53 @@ const currTime = new Date().getHours();
         </div>
       )}
 
-      {selectedMovie && (
-        <div>
-          <h3>Movie: {selectedMovie}</h3>
-          <h4>Showtimes:</h4>
-          <div className='showdiv'>
-          {filteredMovies
-            .find((movie) => movie.date === selectedDate)
-            .movieData[selectedMovie].map((showtime) => (
-            <div id='showtm'>
-              <div key={showtime}>
-                <input
-                  key={showtime}
-                  type="radio"
-                  id={showtime}
-                  name="showtime"
-                  value={showtime}
-                  checked={selectedShowtime === showtime}
-                  onChange={() => handleShowtimeSelect(showtime)}
-                  disabled={
-                 showtime === "9:00 AM" && 9 < currTime
-                || showtime === "12:00 PM" && 12 <= currTime 
-                || showtime === "3:00 PM" && 15 <= currTime 
-                || showtime === "6:00 PM" && 18 <= currTime
-                || showtime === "9:00 PM" && 21 <= currTime
-              } />
-                <label htmlFor={showtime}>{showtime}</label>
-              </div>
-              </div>
-            ))}
-            </div>
-            
-            <Booking selectedMovie={selectedMovie} movie={movie} formatted={formatted} user={user} showtime={selectedShowtime} selectedDate={selectedDate}/>
-        </div>
-      )}
+{selectedMovie && (
+  <div>
+    <h3>Movie: {selectedMovie}</h3>
+    <h4>Showtimes:</h4>
+    <div className="showdiv">
+      {filteredMovies
+        .find((movie) => movie.date === selectedDate)
+        .movieData[selectedMovie].map((showtime) => {
+          const isDisabled =
+            (showtime === "9:00 AM" && 9 < currTime) ||
+            (showtime === "12:00 PM" && 12 <= currTime) ||
+            (showtime === "3:00 PM" && 15 <= currTime) ||
+            (showtime === "6:00 PM" && 18 <= currTime) ||
+            (showtime === "9:00 PM" && 21 <= currTime);
 
+          if (!isDisabled && selectedShowtime === null) {
+            // Set the first available non-disabled showtime as the default
+            handleShowtimeSelect(showtime);
+          }
+
+          return (
+            <div key={showtime}>
+              <input
+                type="radio"
+                id={showtime}
+                name="showtime"
+                value={showtime}
+                checked={selectedShowtime === showtime}
+                onChange={() => handleShowtimeSelect(showtime)}
+                disabled={isDisabled}
+              />
+              <label htmlFor={showtime}>{showtime}</label>
+            </div>
+          );
+        })}
+    </div>
+
+    <Booking
+      selectedMovie={selectedMovie}
+      movie={movie}
+      formatted={formatted}
+      user={user}
+      showtime={selectedShowtime} // Default or selected non-disabled showtime
+      selectedDate={selectedDate}
+    />
+  </div>
+)}
       <Link to="/login">
         <button className='loginbtn' onClick={onLogout}>Logout</button>
       </Link>
