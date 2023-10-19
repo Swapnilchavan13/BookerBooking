@@ -86,6 +86,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
             <h4>No movie data found for {selectedMovie}</h4>
           </div>
         )}
+
         <br />
         <div id="scr">Screen</div>
         <br />

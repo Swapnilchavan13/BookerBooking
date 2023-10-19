@@ -71,7 +71,6 @@ useEffect(() => {
     onLogout();
   };
   
-
   // Filter out dates less than today's date
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 1);
@@ -101,8 +100,6 @@ const formatted = JSON.parse(formattedString);
       <h1>Welcome, {user.name}!</h1>
       <h4>Location: {user.location}</h4>
       <h4>Cinema`s name: {user.name}</h4>
-      {/* <h4>Your rows: {user.rows.map((row) => row.option).join(', ')}</h4> */}
-      {/* <h4>Your Number Of Seats: {user.rows.map((row) => row.seats).join(', ')}</h4> */}
 
       <div className="date-buttons">
         <h4>Select a date:</h4>

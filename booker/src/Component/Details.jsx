@@ -29,9 +29,8 @@ const navigate = useNavigate()
       })
         .then((response) => response.json())
         .then((data) => {
-            alert('Data stored successfully:', data)
+          alert("Tickets Are Booked !!!")
             navigate('/home')
-        //   console.log('Data stored successfully:', data);
         })
         .catch((error) => {
           alert('Error storing data:', error);
@@ -45,11 +44,13 @@ const navigate = useNavigate()
       {savedData && (
         <div>
           <h2>Theater Name: {savedData.tname}</h2>
-          <p>Movie Name: {savedData.mname}</p>
-          <p>Show Date: {savedData.sdate}</p>
-          <p>Show Time: {savedData.showtime}</p>
-          <p>Seats: {savedData.seats.join(', ')}</p>
-          <button onClick={handleConfirmClick}>Confirm</button>
+          <h4>Movie Name: {savedData.mname}</h4>
+          <h4>Show Date: {savedData.sdate}</h4>
+          <h4>Show Time: {savedData.showtime}</h4>
+          <h4>Seats: {savedData.seats.join(', ')}</h4>
+          <img width="300px" height="350px" src="qrcode.jpeg" alt="" />
+          <br />
+          <button onClick={handleConfirmClick}>Confirm And Pay</button>
         </div>
       )}
     </div>
