@@ -57,7 +57,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
     mname: selectedMovie,
     sdate: selectedDate,
     showtime: showtime,
-    seats: selectedSeats,
+    seats: selectedSeats.sort(),
   };
 
   const BookTicket = () => {

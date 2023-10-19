@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../Styles/details.css'
 
 export const Details = () => {
 const navigate = useNavigate()
@@ -39,7 +40,7 @@ const navigate = useNavigate()
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Details</h1>
       {savedData && (
         <div>
