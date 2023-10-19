@@ -103,8 +103,8 @@ const currTime = new Date().getHours();
       <h4>Location: {user.location}</h4>
       <h4>Cinema`s name: {user.name}</h4>
 
+      <h3>Select a date:</h3>
       <div className="date-buttons">
-        <h4>Select a date:</h4>
         {dateButtons}
       </div>
 

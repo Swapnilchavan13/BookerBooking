@@ -11,7 +11,6 @@ export const Details = () => {
     const savedDataString = localStorage.getItem('data');
     if (savedDataString) {
       const parsedData = JSON.parse(savedDataString);
-      console.log(parsedData);
       setSavedData(parsedData);
     } else {
       console.error('Data not found');
