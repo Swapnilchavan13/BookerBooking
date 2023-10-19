@@ -138,6 +138,7 @@ const currTime = new Date().getHours();
             <div id='showtm'>
               <div key={showtime}>
                 <input
+                  key={showtime}
                   type="radio"
                   id={showtime}
                   name="showtime"

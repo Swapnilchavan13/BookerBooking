@@ -183,7 +183,6 @@
       padding: 30px;
       width: 150px;
     }
-
     .isBooked{
         background-color: blue;
     }
@@ -193,6 +192,7 @@
       padding: 10px;
       /* width: fit-content; */
       border: 3px solid black;
+
       border-radius: 10px;
     }
     .selectshow{

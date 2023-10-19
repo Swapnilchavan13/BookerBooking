@@ -66,11 +66,11 @@ export const Details = () => {
   <div className="popup">
     <div className="popup-content">
       <h2>Ticket Information</h2>
-      <p>Theater Name: {savedData.tname}</p>
-      <p>Movie Name: {savedData.mname}</p>
-      <p>Show Date: {savedData.sdate}</p>
-      <p>Show Time: {savedData.showtime}</p>
-      <p>Seats: {savedData.seats.join(', ')}</p>
+      <h4>Theater Name: {savedData.tname}</h4>
+      <h4>Movie Name: {savedData.mname}</h4>
+      <h4>Show Date: {savedData.sdate}</h4>
+      <h4>Show Time: {savedData.showtime}</h4>
+      <h4>Seats: {savedData.seats.join(', ')}</h4>
       <button onClick={handlePrintClick}>Print Ticket</button> <br />
       <button onClick={handleCancel}>Cancel</button>
     </div>
