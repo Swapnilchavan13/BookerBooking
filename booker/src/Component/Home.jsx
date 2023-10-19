@@ -75,16 +75,22 @@ useEffect(() => {
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 1);
   const dateButtons = movieData
-    .filter((movie) => new Date(movie.date) >= currentDate)
-    .map((movie) => (
+  .filter((movie) => new Date(movie.date) >= currentDate)
+  .map((movie) => {
+    const dateObj = new Date(movie.date);
+    const dayOfWeek = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(dateObj);
+
+    return (
       <button
         key={movie.date}
         onClick={() => handleDateSelect(movie.date)}
         className={selectedDate === movie.date ? 'active' : ''}
       >
-        {formatDate(movie.date)} {/* Format the date to display only the day */}
+        {`${dayOfWeek}, ${formatDate(movie.date)}`} {/* Concatenate day abbreviation and formatted date */}
       </button>
-    ));
+    );
+  });
+
 
 // Create an array in the desired format
 const formattedData = user.rows.map((row) => [row.option, row.seats]);
