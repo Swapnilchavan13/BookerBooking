@@ -86,7 +86,7 @@ useEffect(() => {
         onClick={() => handleDateSelect(movie.date)}
         className={selectedDate === movie.date ? 'active' : ''}
       >
-        {`${dayOfWeek}, ${formatDate(movie.date)}`} {/* Concatenate day abbreviation and formatted date */}
+        {`${dayOfWeek.toLocaleUpperCase()} ${formatDate(movie.date)}`} 
       </button>
     );
   });
