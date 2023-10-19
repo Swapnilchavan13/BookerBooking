@@ -39,10 +39,13 @@ export const Details = () => {
   };
 
   const handlePrintClick = () => {
-    // You can add code here to handle printing, such as opening a print dialog.
-    // For simplicity, you can use the browser's print functionality.
     window.print();
+    navigate('/home')
   };
+  const handleCancel= () =>{
+    setIsModalOpen(false)
+    navigate('/home')
+  }
 
   return (
     <div className="container">
@@ -60,19 +63,21 @@ export const Details = () => {
         </div>
       )}
 
-      {isModalOpen && (
-        <div className="popup">
-          <div className="popup-content">
-            <h2>Ticket Information</h2>
-            <h5>Theater Name: {savedData.tname}</h5>
-            <h5>Movie Name: {savedData.mname}</h5>
-            <h5>Show Date: {savedData.sdate}</h5>
-            <h5>Show Time: {savedData.showtime}</h5>
-            <h5>Seats: {savedData.seats.join(', ')}</h5>
-            <button onClick={handlePrintClick}>Print</button>
-          </div>
-        </div>
-      )}
+{isModalOpen && (
+  <div className="popup">
+    <div className="popup-content">
+      <h2>Ticket Information</h2>
+      <p>Theater Name: {savedData.tname}</p>
+      <p>Movie Name: {savedData.mname}</p>
+      <p>Show Date: {savedData.sdate}</p>
+      <p>Show Time: {savedData.showtime}</p>
+      <p>Seats: {savedData.seats.join(', ')}</p>
+      <button onClick={handlePrintClick}>Print Ticket</button> <br />
+      <button onClick={handleCancel}>Cancel</button>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
