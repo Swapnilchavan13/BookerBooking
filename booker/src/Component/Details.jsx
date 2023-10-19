@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Styles/details.css'
+import '../Styles/details.css';
 
 export const Details = () => {
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const [savedData, setSavedData] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const savedDataString = localStorage.getItem('data');
@@ -15,10 +16,9 @@ const navigate = useNavigate()
     } else {
       console.error('Data not found');
     }
-  }, []); // Use an empty dependency array to run this effect only once
+  }, []);
 
   const handleConfirmClick = () => {
-    // Send a POST request to your API with the savedData
     if (savedData) {
       fetch('http://localhost:3005/bookingdata', {
         method: 'POST',
@@ -29,13 +29,19 @@ const navigate = useNavigate()
       })
         .then((response) => response.json())
         .then((data) => {
-          alert("Tickets Are Booked !!!")
-            navigate('/home')
+          alert('Tickets Are Booked !!!');
+          setIsModalOpen(true);
         })
         .catch((error) => {
           alert('Error storing data:', error);
         });
     }
+  };
+
+  const handlePrintClick = () => {
+    // You can add code here to handle printing, such as opening a print dialog.
+    // For simplicity, you can use the browser's print functionality.
+    window.print();
   };
 
   return (
@@ -51,6 +57,20 @@ const navigate = useNavigate()
           <img width="300px" height="350px" src="qrcode.jpeg" alt="" />
           <br />
           <button onClick={handleConfirmClick}>Confirm And Pay</button>
+        </div>
+      )}
+
+      {isModalOpen && (
+        <div className="popup">
+          <div className="popup-content">
+            <h2>Ticket Information</h2>
+            <h5>Theater Name: {savedData.tname}</h5>
+            <h5>Movie Name: {savedData.mname}</h5>
+            <h5>Show Date: {savedData.sdate}</h5>
+            <h5>Show Time: {savedData.showtime}</h5>
+            <h5>Seats: {savedData.seats.join(', ')}</h5>
+            <button onClick={handlePrintClick}>Print</button>
+          </div>
         </div>
       )}
     </div>
