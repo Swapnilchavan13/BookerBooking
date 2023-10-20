@@ -62,9 +62,8 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
 
   const BookTicket = () => {
     if (selectedSeats.length > 0) {
-      alert(
-        `This Theatre ${user.name} this movie ${selectedMovie} this date ${selectedDate} this time ${showtime} This are Selected Seats ${selectedSeats}`
-      );
+      alert(`Welcome to ${user.name}! We are excited to host you for the screening of ${selectedMovie} on ${selectedDate} at ${showtime}. Your reservation includes the following selected seats: ${selectedSeats}.`);
+     
       localStorage.setItem('data', JSON.stringify(data));
       navigate('/details');
     } else {
@@ -86,9 +85,15 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
             <h4>No movie data found for {selectedMovie}</h4>
           </div>
         )}
-
         <br />
         <div id="scr">Screen</div>
+        <br />
+        <div id='bdiv'>
+          <div className='bs'></div>
+          <p>Booked Seats</p>
+          <div className='as'></div>
+          <p>Available Seats</p>
+        </div>
         <br />
         {formatted.map(([row, count]) => (
           <div key={row} className="seat-row">

@@ -64,12 +64,6 @@ useEffect(() => {
     setSelectedShowtime(showtime);
   };
 
-  const handleLogout = () => {
-    // Clear authentication state in localStorage
-    localStorage.setItem('authenticated', 'false');
-    // Continue with your logout logic
-    onLogout();
-  };
   
   // Filter out dates less than today's date
   const currentDate = new Date();
@@ -91,29 +85,20 @@ useEffect(() => {
     );
   });
 
-
 // Create an array in the desired format
 const formattedData = user.rows.map((row) => [row.option, row.seats]);
 // To save it as a string in the format you mentioned:
 const formattedString = JSON.stringify(formattedData);
-
 const formatted = JSON.parse(formattedString);
-
 const filteredMovies = movieData.filter((movie) => movie.date === selectedDate);
-
 const currTime = new Date().getHours();
-
 const today = new Date();
 const yyyy = today.getFullYear();
 let mm = today.getMonth() + 1; // Months start at 0!
 let dd = today.getDate();
-
 if (dd < 10) dd = '0' + dd;
 if (mm < 10) mm = '0' + mm;
-
 const formattedToday = mm + '/' + dd + '/' + yyyy;
-console.log(formattedToday)
-
 
   return (
     <div className="home-container">
