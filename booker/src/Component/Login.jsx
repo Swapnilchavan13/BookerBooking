@@ -26,7 +26,7 @@ export const Login = () => {
     const { loginId, password } = loginData;
 
     try {
-      const response = await axios.get('http://localhost:3005/theatredata');
+      const response = await axios.get('http://62.72.59.146:3005/theatredata');
       const validUser = response.data.find(
         (user) => user.loginid === loginId && user.password === password
       );

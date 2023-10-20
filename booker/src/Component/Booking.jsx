@@ -36,7 +36,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
 
 
   useEffect(() => {
-    fetch('http://localhost:3005/bookingdata')
+    fetch('http://62.72.59.146:3005/bookingdata')
       .then((response) => response.json())
       .then((data) => setApiData(data))
       .catch((error) => console.error('Error fetching data:', error));
@@ -128,9 +128,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
         <div>
           <h5>Selected Seats : {selectedSeats.join(', ')}</h5>
           <h5>Total Amount : Rs. {selectedSeats.length * 100} /-</h5>
-
-          </div>
-
+        </div>
       </div>
 
       <button
