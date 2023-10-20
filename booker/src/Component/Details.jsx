@@ -28,14 +28,20 @@ export const Details = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          alert('Tickets Are Booked !!!');
-          setIsModalOpen(true);
+          if (data.message === 'Data stored successfully.') {
+            alert('Success: Tickets Booked successfully.');
+            setIsModalOpen(true);
+          } else {
+            alert('Sorry Seats are already booked');
+            navigate('/home')
+          }
         })
         .catch((error) => {
           alert('Error storing data:', error);
         });
     }
   };
+  
 
   const handlePrintClick = () => {
     window.print();

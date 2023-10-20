@@ -103,6 +103,18 @@ const filteredMovies = movieData.filter((movie) => movie.date === selectedDate);
 
 const currTime = new Date().getHours();
 
+const today = new Date();
+const yyyy = today.getFullYear();
+let mm = today.getMonth() + 1; // Months start at 0!
+let dd = today.getDate();
+
+if (dd < 10) dd = '0' + dd;
+if (mm < 10) mm = '0' + mm;
+
+const formattedToday = mm + '/' + dd + '/' + yyyy;
+console.log(formattedToday)
+
+
   return (
     <div className="home-container">
       <h1>Welcome, {user.name}!</h1>
@@ -142,11 +154,11 @@ const currTime = new Date().getHours();
         .find((movie) => movie.date === selectedDate)
         .movieData[selectedMovie].map((showtime) => {
           const isDisabled =
-            (showtime === "9:00 AM" && 9 < currTime) ||
-            (showtime === "12:00 PM" && 12 <= currTime) ||
-            (showtime === "3:00 PM" && 15 <= currTime) ||
-            (showtime === "6:00 PM" && 18 <= currTime) ||
-            (showtime === "9:00 PM" && 21 <= currTime);
+            (showtime === "9:00 AM" && selectedDate===formattedToday && 9 < currTime) ||
+            (showtime === "12:00 PM" && selectedDate===formattedToday && 12 <= currTime) ||
+            (showtime === "3:00 PM" && selectedDate===formattedToday && 15 <= currTime) ||
+            (showtime === "6:00 PM" && selectedDate===formattedToday && 18 <= currTime) ||
+            (showtime === "9:00 PM" && selectedDate===formattedToday && 21 <= currTime);
 
           if (!isDisabled && selectedShowtime === null) {
             // Set the first available non-disabled showtime as the default

@@ -4,6 +4,7 @@ import { Login } from './Component/Login';
 import { Home } from './Component/Home';
 import { useState, useEffect } from 'react';
 import { Details } from './Component/Details';
+import { Gotologin } from './Component/Gotologin';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -33,6 +34,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+      <Route path="/" element={<Gotologin />} />
         <Route
           path="/login"
           element={
