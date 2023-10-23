@@ -26,14 +26,12 @@ const Seat = ({ seatNumber, isSelected, isBooked, isSaved, onSelect }) => {
   );
 };
 
-
 export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, showtime }) => {
   const navigate = useNavigate();
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [apiData, setApiData] = useState([]);
 
   const selectedmv = movie.find((movie) => movie.moviename === selectedMovie);
-
 
   useEffect(() => {
     fetch('http://62.72.59.146:3005/bookingdata')

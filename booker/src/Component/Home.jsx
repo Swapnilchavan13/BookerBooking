@@ -63,7 +63,6 @@ useEffect(() => {
   const handleShowtimeSelect = (showtime) => {
     setSelectedShowtime(showtime);
   };
-
   
   // Filter out dates less than today's date
   const currentDate = new Date();
@@ -139,7 +138,7 @@ const formattedToday = mm + '/' + dd + '/' + yyyy;
         .find((movie) => movie.date === selectedDate)
         .movieData[selectedMovie].map((showtime) => {
           const isDisabled =
-            (showtime === "9:00 AM" && selectedDate===formattedToday && 9 < currTime) ||
+            (showtime === "9:00 AM" && selectedDate===formattedToday && 9 <= currTime) ||
             (showtime === "12:00 PM" && selectedDate===formattedToday && 12 <= currTime) ||
             (showtime === "3:00 PM" && selectedDate===formattedToday && 15 <= currTime) ||
             (showtime === "6:00 PM" && selectedDate===formattedToday && 18 <= currTime) ||
