@@ -55,7 +55,7 @@ useEffect(() => {
     setSelectedShowtime(null); // Clear selected showtime when a new date is selected.
   };
 
-  const handleMovieSelect = (movieName) => {
+  const handleMovieSelect = (movieName, mvposter) => {
     setSelectedMovie(movieName);
     setSelectedShowtime(null); // Clear selected showtime when a new movie is selected.
   };
@@ -98,6 +98,7 @@ let dd = today.getDate();
 if (dd < 10) dd = '0' + dd;
 if (mm < 10) mm = '0' + mm;
 const formattedToday = mm + '/' + dd + '/' + yyyy;
+
 
   return (
     <div className="home-container">
