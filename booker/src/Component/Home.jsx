@@ -59,7 +59,7 @@ useEffect(() => {
     setSelectedMovie(movieName);
     setSelectedShowtime(null); // Clear selected showtime when a new movie is selected.
   };
-
+  
   const handleShowtimeSelect = (showtime) => {
     setSelectedShowtime(showtime);
   };
@@ -76,6 +76,7 @@ useEffect(() => {
     return (
       <button
         key={movie.date}
+
         onClick={() => handleDateSelect(movie.date)}
         className={selectedDate === movie.date ? 'active' : ''}
       >
@@ -83,7 +84,6 @@ useEffect(() => {
       </button>
     );
   });
-
 // Create an array in the desired format
 const formattedData = user.rows.map((row) => [row.option, row.seats]);
 // To save it as a string in the format you mentioned:
