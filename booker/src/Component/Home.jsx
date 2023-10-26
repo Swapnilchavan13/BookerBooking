@@ -9,7 +9,7 @@ export const Home = ({ user, onLogout }) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedShowtime, setSelectedShowtime] = useState(null);
   const [authenticated, setAuthenticated] = useState(false); // Initialize as not authenticated
-  const [movie, setMovie] = useState([]);
+  const [moviee, setMovie] = useState([]);
 
 useEffect(() => {
   // Fetch data from your API endpoint
@@ -30,18 +30,25 @@ useEffect(() => {
       setAuthenticated(true);
     }
 
-    // Fetch data from your API endpoint
+      // Fetch data from your API endpoint
+
     fetch('http://62.72.59.146:3005/allocatedata')
-      .then((response) => response.json())
-      .then((data) => {
-        // Filter the data based on user.name
-        const filteredData = data.filter((item) => item.theatreName === user.name);
-        setMovieData(filteredData);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, [user.name]);
+    .then((response) => response.json())
+    .then((data) => {
+      // Filter the data based on user.name
+      const filteredData = data.filter((item) => item.theatreName === user.name);
+      setMovieData(filteredData);
+
+      // Set the selectedDate to the first available date
+      const firstAvailableDate = filteredData.find((movie) => new Date(movie.date) >= currentDate);
+      if (firstAvailableDate) {
+        setSelectedDate(firstAvailableDate.date);
+      }
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+    });
+}, [user.name]);
 
 
   const formatDate = (dateString) => {
@@ -98,37 +105,57 @@ let dd = today.getDate();
 if (dd < 10) dd = '0' + dd;
 if (mm < 10) mm = '0' + mm;
 const formattedToday = mm + '/' + dd + '/' + yyyy;
+// console.log(moviee)
 
+const movielist = moviee.map((item, index) => (
+  <div key={index} calssName="movie-item">
+    <h2>{item.name}</h2>
+    <img width="80px" src={item.poster} alt={item.name} />
+  </div>
+));
 
   return (
     <div className="home-container">
       <h1>Welcome, {user.name}!</h1>
       <h4>Location: {user.location}</h4>
       <h4>Cinema`s name: {user.name}</h4>
-
       <h3>Select a date:</h3>
       <div className="date-buttons">
         {dateButtons}
       </div>
 
       {selectedDate && (
-        <div>
-          <h2>Movies on {formatDate(selectedDate)} in {user.name}:</h2>
-          {filteredMovies.map((movie) => (
-            <div className='mvdiv' key={movie._id}>
-              {Object.keys(movie.movieData).map((movieName) => (
-                <button
-                  key={movieName}
-                  onClick={() => handleMovieSelect(movieName)}
-                  className={selectedMovie === movieName ? 'active' : 'mvbtn'}
-                >
-                  {movieName}
-                </button>
-              ))}
+  <div>
+    <h2>Movies on {formatDate(selectedDate)} in {user.name}:</h2>
+    {filteredMovies.map((movie) => (
+      <div className='mvdiv' key={movie._id}>
+        {Object.keys(movie.movieData).map((movieName) => {
+          return (
+           <div key={movieName} className="movie-poster">
+              <h3
+                onClick={() => handleMovieSelect(movieName)}
+                className={selectedMovie === movieName ? 'active' : 'mvbtn'}
+              >
+                {movieName}
+              </h3>
+
+              {moviee.map((item, index) => (
+  <div key={index} className="movie-item">
+    {item.moviename === movieName && (
+      <div>
+        {/* <h2>{item.moviename}</h2> */}
+        <img width="80px" src={item.poster} alt={item.name} />
+      </div>
+    )}
+  </div>
+))}
             </div>
-          ))}
-        </div>
-      )}
+          );
+        })}
+      </div>
+    ))}
+  </div>
+)}
 
 {selectedMovie && (
   <div>
@@ -169,7 +196,7 @@ const formattedToday = mm + '/' + dd + '/' + yyyy;
 
     <Booking
       selectedMovie={selectedMovie}
-      movie={movie}
+      movie={moviee}
       formatted={formatted}
       user={user}
       showtime={selectedShowtime} // Default or selected non-disabled showtime
