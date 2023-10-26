@@ -138,7 +138,6 @@ const movielist = moviee.map((item, index) => (
               >
                 {movieName}
               </h3>
-
               {moviee.map((item, index) => (
   <div key={index} className="movie-item">
     {item.moviename === movieName && (
