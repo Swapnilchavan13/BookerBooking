@@ -106,13 +106,6 @@ if (mm < 10) mm = '0' + mm;
 const formattedToday = mm + '/' + dd + '/' + yyyy;
 // console.log(moviee)
 
-const movielist = moviee.map((item, index) => (
-  <div key={index} calssName="movie-item">
-    <h2>{item.name}</h2>
-    <img width="80px" src={item.poster} alt={item.name} />
-  </div>
-));
-
   return (
     <div className="home-container">
       <h1>Welcome, {user.name}!</h1>
@@ -140,7 +133,6 @@ const movielist = moviee.map((item, index) => (
   <div key={index} className="movie-item">
     {item.moviename === movieName && (
       <div>
-        {/* <h2>{item.moviename}</h2> */}
         <img width="80px" height="120px" src={item.poster} alt={item.name} />
       </div>
     )}

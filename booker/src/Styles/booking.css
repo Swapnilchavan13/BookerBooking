@@ -99,7 +99,7 @@
   
   /* Mobile-responsive styles */
   
-  @media screen and (max-width: 680px) {
+  @media screen and (max-width: 880px) {
   
     .seats {
       margin: auto;
@@ -141,34 +141,43 @@
       gap: 20px;
     }
     
-    img{
+    /* img{
       text-align: center;
       justify-content: center;
       width: 48%;
       width: 100%;
-    }
-  
+    } */
+
+    .pimg{
+      width: 300px;
+      /* margin-left: -30px; */
+    }  
     .seatindication {
       padding-left: 0;
     }
   
-    .screen {
+    #scr {
       text-align: center;
-      margin: auto;
-      width: 98%;
+      /* margin: auto; */
+      width: 70%;
+    }
+
+    .seat-row div{
+      width: 12px;
+      height: 15px;
     }
   
     .column{
-      height: 40px;
+      height: 30px;
       gap:8px;
       width: 300px;
     }
   
     .column div{
-      width: 10px;
-      height: 15px;
+      width: 8px;
+      height: 5px;
       text-align: center;
-      font-size: 13px;
+      font-size: 10px;
       gap: 5px;
     }
   

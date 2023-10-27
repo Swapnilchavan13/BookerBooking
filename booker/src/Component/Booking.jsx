@@ -74,9 +74,9 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
       <div className="seats">
         <h4>Selected Movie in Booking: {selectedMovie}</h4>
         {selectedmv ? (
-          <div>
+          <div className='pdiv'>
             <h4>Selected Movie: {selectedMovie}</h4>
-            <img width="350px" src={selectedmv.poster} alt={selectedMovie} />
+            <img className='pimg' src={selectedmv.poster} alt={selectedMovie} />
           </div>
         ) : (
           <div>

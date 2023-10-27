@@ -17,7 +17,7 @@
     grid-template-columns: repeat(5, 1fr);
     text-align: center;
     justify-content: space-evenly;
-    /* gap: 10px; */
+    gap: 10px;
 }
 
 .date-buttons>button {
@@ -80,5 +80,5 @@ button:hover {
 
 .mvdiv{
     display: flex;
-    gap: 30px;
+    gap: 2px;
 }
