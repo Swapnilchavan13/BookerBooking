@@ -15,7 +15,7 @@
     text-align: center;
     justify-content: center;
 }
-.seats >div{
+.seats>div{
       /* background-color: teal; */
       width: fit-content;
       text-align: center;
@@ -58,6 +58,9 @@
     padding: 30px;
   }
   
+  .pimg{
+    width: 300px;
+  } 
   .show{
   display: grid;
   grid-template-columns: repeat(3, 100px);
@@ -141,16 +144,15 @@
       gap: 20px;
     }
     
-    /* img{
+    img{
       text-align: center;
       justify-content: center;
       width: 48%;
       width: 100%;
-    } */
+    } 
 
     .pimg{
       width: 300px;
-      /* margin-left: -30px; */
     }  
     .seatindication {
       padding-left: 0;

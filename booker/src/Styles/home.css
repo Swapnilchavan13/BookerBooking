@@ -82,3 +82,11 @@ button:hover {
     display: flex;
     gap: 2px;
 }
+
+.mvdiv div{
+    border-radius: 10px;
+}
+img{
+    border-radius: 10px;
+
+}
