@@ -77,3 +77,8 @@ button:hover {
     color: white !important;
     background-color: #a3020a;
 }
+
+.mvdiv{
+    display: flex;
+    gap: 30px;
+}
