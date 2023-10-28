@@ -11,6 +11,18 @@ export const Home = ({ user, onLogout }) => {
   const [authenticated, setAuthenticated] = useState(false); // Initialize as not authenticated
   const [moviee, setMovie] = useState([]);
 
+  useEffect(() => {
+    if (selectedDate && movieData.length > 0 && !selectedMovie) {
+      const moviesForSelectedDate = movieData.find(movie => movie.date === selectedDate);
+  
+      if (moviesForSelectedDate) {
+        const firstMovie = Object.keys(moviesForSelectedDate.movieData)[0];
+        // console.log(filteredMovies)
+        setSelectedMovie(firstMovie);
+      }
+    }
+  }, [selectedDate, movieData, selectedMovie]);
+
 useEffect(() => {
   // Fetch data from your API endpoint
   fetch('http://62.72.59.146:3005/moviedata')
@@ -48,16 +60,10 @@ useEffect(() => {
     .catch((error) => {
       console.error('Error fetching data:', error);
     });
+
+    
 }, [user.name]);
 
-
-useEffect(() => {
-  // Select the first movie by default when the component mounts
-  if (selectedDate && movieData.length > 0 && !selectedMovie) {
-    const firstMovie = Object.keys(movieData[0].movieData)[0];
-    setSelectedMovie(firstMovie);
-  }
-}, [selectedDate, movieData]);
 
 
   const formatDate = (dateString) => {
@@ -69,6 +75,7 @@ useEffect(() => {
     setSelectedDate(date);
     setSelectedMovie(null); // Clear selected movie when a new date is selected.
     setSelectedShowtime(null); // Clear selected showtime when a new date is selected.
+    
   };
 
   const handleMovieSelect = (movieName, mvposter) => {
