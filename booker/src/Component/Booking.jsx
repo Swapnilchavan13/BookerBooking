@@ -59,13 +59,12 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
   };
 
   const BookTicket = () => {
-    if (selectedSeats.length > 0) {
+    if (selectedSeats.length > 0 && showtime) {
       alert(`Welcome to ${user.name}! We are excited to host you for the screening of ${selectedMovie} on ${selectedDate} at ${showtime}. Your reservation includes the following selected seats: ${selectedSeats}.`);
-     
       localStorage.setItem('data', JSON.stringify(data));
       navigate('/details');
     } else {
-      alert('Please select at least one seat.');
+      alert('Please select Showtime.');
     }
   };
 
