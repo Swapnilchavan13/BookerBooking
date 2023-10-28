@@ -12,12 +12,24 @@
     display: flex;
 }
 
+.maindiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: #a3020a;
+    border-radius: 5px;
+}
+.maindiv h1{
+    color: white;
+
+}
 .date-buttons {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     text-align: center;
     justify-content: space-evenly;
-    gap: 10px;
+    gap: 3px;
 }
 
 .date-buttons>button {

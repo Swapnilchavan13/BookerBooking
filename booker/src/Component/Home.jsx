@@ -51,6 +51,15 @@ useEffect(() => {
 }, [user.name]);
 
 
+useEffect(() => {
+  // Select the first movie by default when the component mounts
+  if (selectedDate && movieData.length > 0 && !selectedMovie) {
+    const firstMovie = Object.keys(movieData[0].movieData)[0];
+    setSelectedMovie(firstMovie);
+  }
+}, [selectedDate, movieData]);
+
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.getDate(); // Get only the day component from the date.
@@ -71,23 +80,26 @@ useEffect(() => {
     setSelectedShowtime(showtime);
   };
   // Filter out dates less than today's date
-  const currentDate = new Date();
-  currentDate.setDate(currentDate.getDate() - 1);
-  const dateButtons = movieData
+ const currentDate = new Date();
+currentDate.setDate(currentDate.getDate() - 1);
+const uniqueDates = movieData
   .filter((movie) => new Date(movie.date) >= currentDate)
-  .map((movie) => {
-    const dateObj = new Date(movie.date);
-    const dayOfWeek = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(dateObj);
+  .map((movie) => movie.date)
+  .sort((a, b) => new Date(a) - new Date(b));
+
+const dateButtons = uniqueDates.map((date) => {
+  const dateObj = new Date(date);
+  const dayOfWeek = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(dateObj);
+
 
     return (
       <button
-        key={movie.date}
-
-        onClick={() => handleDateSelect(movie.date)}
-        className={selectedDate === movie.date ? 'active' : ''}
-      >
-        {`${dayOfWeek.toLocaleUpperCase()} ${formatDate(movie.date)}`} 
-      </button>
+      key={date}
+      onClick={() => handleDateSelect(date)}
+      className={selectedDate === date ? 'active' : ''}
+    >
+      {`${dayOfWeek.toLocaleUpperCase()} ${formatDate(date)}`}
+    </button>
     );
   });
 // Create an array in the desired format
@@ -108,9 +120,15 @@ const formattedToday = mm + '/' + dd + '/' + yyyy;
 
   return (
     <div className="home-container">
-      <h1>Welcome, {user.name}!</h1>
+      <div className='maindiv'>
+      <h1>Hello 👋, {user.name}!</h1>
+
+      <Link to="/login">
+        <button className='loginbtn' onClick={onLogout}>Logout</button>
+      </Link>
+      </div>
       <h4>Location: {user.location}</h4>
-      <h4>Cinema`s name: {user.name}</h4>
+      {/* <h4>Cinema`s name: {user.name}</h4> */}
       <h3>Select a date:</h3>
       <div className="date-buttons">
         {dateButtons}
@@ -118,8 +136,10 @@ const formattedToday = mm + '/' + dd + '/' + yyyy;
 
       {selectedDate && (
   <div>
-    <h2>Movies on {formatDate(selectedDate)} in {user.name}:</h2>
-    {filteredMovies.map((movie) => (
+    {/* <h2>Movies on {formatDate(selectedDate)} in {user.name}:</h2> */}
+    <br />
+    {
+    filteredMovies.map((movie) => (
       <div className='mvdiv' key={movie._id}>
         {Object.keys(movie.movieData).map((movieName) => {
           return (
@@ -196,9 +216,7 @@ const formattedToday = mm + '/' + dd + '/' + yyyy;
     />
   </div>
 )}
-      <Link to="/login">
-        <button className='loginbtn' onClick={onLogout}>Logout</button>
-      </Link>
+    
     </div>
   );
 };
