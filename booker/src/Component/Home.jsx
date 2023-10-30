@@ -60,11 +60,7 @@ useEffect(() => {
     .catch((error) => {
       console.error('Error fetching data:', error);
     });
-
-    
 }, [user.name]);
-
-
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -75,10 +71,9 @@ useEffect(() => {
     setSelectedDate(date);
     setSelectedMovie(null); // Clear selected movie when a new date is selected.
     setSelectedShowtime(null); // Clear selected showtime when a new date is selected.
-    
   };
 
-  const handleMovieSelect = (movieName, mvposter) => {
+  const handleMovieSelect = (movieName) => {
     setSelectedMovie(movieName);
     setSelectedShowtime(null); // Clear selected showtime when a new movie is selected.
   };
@@ -97,7 +92,6 @@ const uniqueDates = movieData
 const dateButtons = uniqueDates.map((date) => {
   const dateObj = new Date(date);
   const dayOfWeek = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(dateObj);
-
 
     return (
       <button
@@ -178,7 +172,7 @@ const formattedToday = mm + '/' + dd + '/' + yyyy;
 
 {selectedMovie && (
   <div>
-    <h3>Movie: {selectedMovie}</h3>
+    {/* <h3>Movie: {selectedMovie}</h3> */}
     <h4>Showtimes:</h4>
     <div className="showdiv">
       {filteredMovies
@@ -212,7 +206,6 @@ const formattedToday = mm + '/' + dd + '/' + yyyy;
           );
         })}
     </div>
-
     <Booking
       selectedMovie={selectedMovie}
       movie={moviee}
