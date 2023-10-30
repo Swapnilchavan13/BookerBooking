@@ -7,8 +7,8 @@ const Seat = ({ seatNumber, isSelected, isBooked, isSaved, onSelect }) => {
   const seatClassName = isSelected
     ? 'seat selected'
     : isSaved
-    ? 'seat booked'
-    : 'seat';
+      ? 'seat booked'
+      : 'seat';
 
   const handleClick = () => {
     if (!isBooked) {
@@ -108,13 +108,13 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
 
               return (
                 <Seat
-                key={seatNumberStr}
-                seatNumber={seatNumberStr}
-                isSelected={selectedSeats.includes(seatNumberStr)}
-                isBooked={isBooked}
-                isSaved={isSaved}
-                onSelect={handleSeatSelect}
-              />  
+                  key={seatNumberStr}
+                  seatNumber={seatNumberStr}
+                  isSelected={selectedSeats.includes(seatNumberStr)}
+                  isBooked={isBooked}
+                  isSaved={isSaved}
+                  onSelect={handleSeatSelect}
+                />
               );
             })}
             <h3>{row}</h3>
