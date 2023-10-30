@@ -1,5 +1,4 @@
 /* Login.css */
-
 .login-container {
     width: 300px;
     margin: 0 auto;
@@ -28,7 +27,7 @@
   .loginbtn {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #007afd;
     color: #fff;
     border: none;
     border-radius: 5px;

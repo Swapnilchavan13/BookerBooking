@@ -164,7 +164,7 @@ export const Details = () => {
           <br />
           <div className={formData.paymentMethod === 'Cash' ? 'scanner hidden' : 'scanner'}>
         <h3>Scan And Pay The Amount</h3>
-        <img width="300px" height="360px" src="qrcode.jpeg" alt="" />
+        <img width="300px" height="450px" src="qrcode.jpeg" alt="" />
         <br />
         <div>
               <label htmlFor="customername"> UPI Ref. No</label>
