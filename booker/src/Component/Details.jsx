@@ -84,13 +84,38 @@ export const Details = () => {
       {savedData && (
         <div>
           {/* Display saved data here */}
-          <h2>Theater Name: {savedData.tname}</h2>
-          <h4>Movie Name: {savedData.mname}</h4>
-          <h4>Show Date: {savedData.sdate}</h4>
-          <h4>Show Time: {savedData.showtime}</h4>
-          <h4>Seats: {savedData.seats.join(', ')}</h4>
-          <h4>Total: Rs.{savedData.seats.length * 100} /-</h4>
           <div>
+  {/* Display saved data here */}
+  <table className="styled-table">
+    <tr>
+      <th>Theater Name</th>
+      <td>{savedData.tname}</td>
+    </tr>
+    <tr>
+      <th>Movie Name</th>
+      <td>{savedData.mname}</td>
+    </tr>
+    <tr>
+      <th>Show Date</th>
+      <td>{savedData.sdate}</td>
+    </tr>
+    <tr>
+      <th>Show Time</th>
+      <td>{savedData.showtime}</td>
+    </tr>
+    <tr>
+      <th>Seats</th>
+      <td>{savedData.seats.join(', ')}</td>
+    </tr>
+    <tr>
+      <th>Total</th>
+      <td>Rs.{savedData.seats.length * 100} /-</td>
+    </tr>
+  </table>
+</div>
+
+          <div>
+            <br />
             
             <div>
               <label htmlFor="customermobile"> Customer's Mobile</label>

@@ -82,4 +82,38 @@
   }
   
 
+  .styled-table {
+    /* border-collapse: collapse; */
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 100%; /* You can adjust the maximum width as needed */
+  }
+  
+  .styled-table th {
+    background-color: rgb(153, 79, 79);
+    color: white;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .styled-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .styled-table tr:nth-child(even) {
+    background-color: rgb(173, 54, 54);
+    color: white;
+  }
+  
+  .styled-table tr:nth-child(odd) {
+    background-color: rgb(110, 52, 52);
+    color: white;
+  }
+  
+  .styled-table td:first-child {
+    font-weight: bold;
+    color: black;
+  }
   
