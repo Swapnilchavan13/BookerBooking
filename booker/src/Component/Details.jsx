@@ -139,9 +139,10 @@ export const Details = () => {
               />
             </div>
 
-            <div>
+            <div className='genderdiv'>
               {/* <label>Gender</label> */}
               <br />
+              <label htmlFor="male">
               <input
                 type="radio"
                 name="gender"
@@ -150,7 +151,10 @@ export const Details = () => {
                 checked={formData.gender === 'Male'} // Set as checked if 'Male'
                 onChange={handleInputChange}
               />
-              <label htmlFor="male">Male</label>
+              Male
+              </label>
+
+              <label htmlFor="female">
               <input
                 type="radio"
                 name="gender"
@@ -159,11 +163,13 @@ export const Details = () => {
                 checked={formData.gender === 'Female'}
                 onChange={handleInputChange}
               />
-              <label htmlFor="female">Female</label>
+             Female
+             </label>
             </div>
 
             <div>
               <br />
+              <label htmlFor="upi">
               <input
                 type="radio"
                 name="paymentMethod"
@@ -172,7 +178,9 @@ export const Details = () => {
                 checked={formData.paymentMethod === 'UPI'}
                 onChange={handleInputChange}
               />
-              <label htmlFor="upi">UPI</label>
+              UPI</label>
+
+              <label htmlFor="cash">
               <input
                 type="radio"
                 id="cash"
@@ -181,7 +189,7 @@ export const Details = () => {
                 checked={formData.paymentMethod === 'Cash'} 
                 onChange={handleInputChange}
               />
-              <label htmlFor="cash">Cash</label>
+              Cash</label>
             </div>
           </div>
           <br />
