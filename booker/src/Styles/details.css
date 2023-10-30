@@ -15,26 +15,14 @@
   color: white;
 }
 
+::placeholder {
+  color: rgb(173, 171, 171);
+}
+
 .container input {
   background-color: #793636;
   border: 1px solid rgb(160, 14, 14);
   color: white;
-}
-
-h1 {
-  font-size: 24px;
-  color: #333;
-}
-
-h2 {
-  font-size: 20px;
-  color: #333;
-}
-
-p {
-  font-size: 16px;
-  color: #555;
-  margin: 5px 0;
 }
 
 button {
@@ -90,7 +78,6 @@ button:hover {
 .hidden {
   display: none;
 }
-
 
 .styled-table {
   /* border-collapse: collapse; */
