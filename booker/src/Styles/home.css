@@ -93,8 +93,9 @@ button:hover {
 }
 
 .mvdiv{
-    display: flex;
-    gap: 2px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
 }
 
 .mvdiv div{
