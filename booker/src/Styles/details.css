@@ -10,10 +10,12 @@
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
 .container * {
   color: white;
 }
-.container input{
+
+.container input {
   background-color: #793636;
   border: 1px solid rgb(160, 14, 14);
   color: white;
