@@ -52,8 +52,6 @@ button:hover {
 }
 
 /* popup */
-
-/* details.css */
 .popup {
   display: none;
   position: fixed;
@@ -82,11 +80,9 @@ button:hover {
 }
 
 .styled-table {
-  /* border-collapse: collapse; */
   border: 2px solid black;
   border-radius: 5px;
   width: 100%;
-  /* You can adjust the maximum width as needed */
 }
 
 .styled-table th {
