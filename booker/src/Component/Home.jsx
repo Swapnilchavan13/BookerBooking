@@ -154,7 +154,7 @@ export const Home = ({ user, onLogout }) => {
                           <div key={index} className="movie-item">
                             {item.moviename === movieName && (
                               <div>
-                                <img width="80px" height="120px" src={item.poster} alt={item.name} />
+                                <img className='img' width="80px" height="120px" src={item.poster} alt={item.name} />
                               </div>
                             )}
                           </div>
