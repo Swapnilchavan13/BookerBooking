@@ -13,6 +13,7 @@ export const Details = () => {
     paymentMethod: 'UPI',
     upiRef: '',
   });
+  const [isFormComplete, setIsFormComplete] = useState(false);
 
   useEffect(() => {
     const savedDataString = localStorage.getItem('data');
@@ -33,6 +34,11 @@ export const Details = () => {
   };
 
   const handleConfirmClick = () => {
+    if (!formData.customerMobile || !formData.customerName) {
+      alert('Please fill in both customer name and mobile number.');
+      return;
+    }
+
     if (savedData) {
       // Combine form data with saved data
       const bookingData = {
@@ -63,6 +69,7 @@ export const Details = () => {
         console.log(bookingData)
     }
   };
+
 
   const handlePrintClick = () => {
     window.print();
@@ -118,7 +125,7 @@ export const Details = () => {
             <div>
               <label htmlFor="customermobile"> Customer's Mobile</label>
               <input
-                type="text"
+                type="number"
                 name="customerMobile"
                 id="customerMobile"
                 placeholder="Customer's Mobile"
@@ -130,8 +137,8 @@ export const Details = () => {
             <div>
               <label htmlFor="customername"> Customer's Name</label>
               <input
-                type="text"
                 name="customerName"
+                type="text"
                 id="customerName"
                 placeholder="Customer's Name"
                 value={formData.customerName}
@@ -200,7 +207,7 @@ export const Details = () => {
         <div>
               <label htmlFor="customername"> UPI Ref. No</label>
               <input
-                type="text"
+                type="number"
                 name="upiRef"
                 id="upiRef"
                 placeholder="UPI Ref. No"

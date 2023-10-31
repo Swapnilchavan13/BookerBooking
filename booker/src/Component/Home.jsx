@@ -89,6 +89,20 @@ export const Home = ({ user, onLogout }) => {
     .map((movie) => movie.date)
     .sort((a, b) => new Date(a) - new Date(b));
 
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+const slideNext = () => {
+  if (currentIndex < uniqueDates.length - 1) {
+    setCurrentIndex(currentIndex + 1);
+  }
+};
+
+const slidePrev = () => {
+  if (currentIndex > 0) {
+    setCurrentIndex(currentIndex - 1);
+  }
+};
+
   const dateButtons = uniqueDates.map((date) => {
     const dateObj = new Date(date);
     const dayOfWeek = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(dateObj);
@@ -131,9 +145,22 @@ export const Home = ({ user, onLogout }) => {
       <h4>Location: {user.location}</h4>
       {/* <h4>Cinema`s name: {user.name}</h4> */}
       <h3>Select a date:</h3>
-      <div className="date-buttons">
+      {/* <div className="date-buttons">
         {dateButtons}
+      </div> */}
+
+<div className="date-buttons">
+      <button id='slidebtn' onClick={slidePrev}>{"<"}</button>
+      <div className="slider">
+        <div
+          className="slider-content"
+          style={{ transform: `translateX(-${currentIndex * 50}%)` }}
+        >
+          {dateButtons}
+        </div>
       </div>
+      <button onClick={slideNext}>{">"}</button>
+    </div>
 
       {selectedDate && (
         <div>

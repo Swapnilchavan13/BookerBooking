@@ -82,14 +82,14 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
           </div>
         )}
         <br />
-        <div id="scr">Screen</div>
-        <br />
         <div id='bdiv'>
           <div className='bs'></div>
           <p>Booked Seats</p>
           <div className='as'></div>
           <p>Available Seats</p>
         </div>
+        <br />
+        <div id="scr">Screen</div> 
         <br />
         {formatted.map(([row, count]) => (
           <div key={row} className="seat-row">

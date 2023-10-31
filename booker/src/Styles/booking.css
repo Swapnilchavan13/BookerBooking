@@ -1,4 +1,7 @@
 /* Default styles for larger screens */
+div{
+  color: white;
+}
 
 .seats div {
   width: fit-content;
@@ -8,7 +11,7 @@
   border-radius: 10px;
   cursor: pointer;
   border: 1px solid black;
-
+  color: black;
 }
 
 .seats {
@@ -19,6 +22,7 @@
 
 .seats>div {
   /* background-color: teal; */
+  color: black;
   width: fit-content;
   text-align: center;
   background-color: rgb(247, 234, 234);
@@ -106,6 +110,8 @@
 
 #bdiv {
   /* width: 100%; */
+  display: flex;
+  gap: 23px;
   text-align: left;
   margin-left: 0;
 }
@@ -174,6 +180,7 @@
   #scr {
     text-align: center;
     /* margin: auto; */
+    margin-bottom: 60px;
     width: 70%;
   }
 
