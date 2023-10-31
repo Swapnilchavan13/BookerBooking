@@ -154,8 +154,6 @@ img{
     color: #fff;
   }
   
-  /* Add additional styling for date buttons, if necessary */
-  
   /* Disable Previous button if at the beginning */
   .date-buttons button:first-child:disabled {
     opacity: 0.5;
