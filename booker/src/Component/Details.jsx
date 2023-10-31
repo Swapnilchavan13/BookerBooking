@@ -34,11 +34,11 @@ export const Details = () => {
   };
 
   const handleConfirmClick = () => {
-    if(formData.paymentMethod==="UPI" && !formData.upiRef ) {
+    if (formData.paymentMethod === "UPI" && !formData.upiRef) {
       alert('Please fill the Upi ref Number')
       return;
     }
-    
+
     if (!formData.customerMobile || !formData.customerName) {
       alert('Please fill in both customer name and mobile number.');
       return;
@@ -71,19 +71,19 @@ export const Details = () => {
         .catch((error) => {
           alert('Error storing data:', error);
         });
-        console.log(bookingData)
+      console.log(bookingData)
     }
   };
 
 
   const handlePrintClick = () => {
     window.print();
-  
+
     setTimeout(() => {
       navigate('/home');
-    }, 2000); 
+    }, 2000);
   };
-  
+
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -97,34 +97,34 @@ export const Details = () => {
         <div>
           {/* Display saved data here */}
           <div>
-  {/* Display saved data here */}
-  <table className="styled-table">
-    <tr>
-      <th>Theater Name</th>
-      <td>{savedData.tname}</td>
-    </tr>
-    <tr>
-      <th>Movie Name</th>
-      <td>{savedData.mname}</td>
-    </tr>
-    <tr>
-      <th>Show Date</th>
-      <td>{savedData.sdate}</td>
-    </tr>
-    <tr>
-      <th>Show Time</th>
-      <td>{savedData.showtime}</td>
-    </tr>
-    <tr>
-      <th>Seats</th>
-      <td>{savedData.seats.join(', ')}</td>
-    </tr>
-    <tr>
-      <th>Total</th>
-      <td>Rs.{savedData.seats.length * 100} /-</td>
-    </tr>
-  </table>
-</div>
+            {/* Display saved data here */}
+            <table className="styled-table">
+              <tr>
+                <th>Theater Name</th>
+                <td>{savedData.tname}</td>
+              </tr>
+              <tr>
+                <th>Movie Name</th>
+                <td>{savedData.mname}</td>
+              </tr>
+              <tr>
+                <th>Show Date</th>
+                <td>{savedData.sdate}</td>
+              </tr>
+              <tr>
+                <th>Show Time</th>
+                <td>{savedData.showtime}</td>
+              </tr>
+              <tr>
+                <th>Seats</th>
+                <td>{savedData.seats.join(', ')}</td>
+              </tr>
+              <tr>
+                <th>Total</th>
+                <td>Rs.{savedData.seats.length * 100} /-</td>
+              </tr>
+            </table>
+          </div>
           <div>
             <br />
             <div>
@@ -154,62 +154,72 @@ export const Details = () => {
             <div className='genderdiv'>
               {/* <label>Gender</label> */}
               <br />
-              <label htmlFor="male">
-              <input
-                type="radio"
-                name="gender"
-                id="male"
-                value="Male"
-                checked={formData.gender === 'Male'} // Set as checked if 'Male'
-                onChange={handleInputChange}
-              />
-              Male
-              </label>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <input
+                  type="radio"
+                  name="gender"
+                  id="male"
+                  value="Male"
+                  checked={formData.gender === 'Male'}
+                  onChange={handleInputChange}
+                />
+                <label htmlFor="male">Male</label>
+              </div>
 
-              <label htmlFor="female">
-              <input
-                type="radio"
-                name="gender"
-                id="female"
-                value="Female"
-                checked={formData.gender === 'Female'}
-                onChange={handleInputChange}
-              />
-             Female
-             </label>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <input
+                  type="radio"
+                  name="gender"
+                  id="female"
+                  value="Female"
+                  checked={formData.gender === 'Female'}
+                  onChange={handleInputChange}
+                />
+                <label htmlFor="female">
+                  Female
+                </label>
+              </div>
+
             </div>
 
-            <div>
+            <div className='genderdiv'>
               <br />
-              <label htmlFor="upi">
-              <input
-                type="radio"
-                name="paymentMethod"
-                id="upi"
-                value="UPI"
-                checked={formData.paymentMethod === 'UPI'}
-                onChange={handleInputChange}
-              />
-              UPI</label>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
 
-              <label htmlFor="cash">
-              <input
-                type="radio"
-                id="cash"
-                value="Cash"
-                name="paymentMethod"
-                checked={formData.paymentMethod === 'Cash'} 
-                onChange={handleInputChange}
-              />
-              Cash</label>
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  id="upi"
+                  value="UPI"
+                  checked={formData.paymentMethod === 'UPI'}
+                  onChange={handleInputChange}
+                />
+                <label htmlFor="upi">
+                  UPI</label>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+
+                <input
+                  type="radio"
+                  id="cash"
+                  value="Cash"
+                  name="paymentMethod"
+                  checked={formData.paymentMethod === 'Cash'}
+                  onChange={handleInputChange}
+                />
+                <label htmlFor="cash">
+                  Cash</label>
+              </div>
+
             </div>
           </div>
           <br />
           <div className={formData.paymentMethod === 'Cash' ? 'scanner hidden' : 'scanner'}>
-        <h3>Scan And Pay The Amount</h3>
-        <img width="300px" height="450px" src="qrcode.jpeg" alt="" />
-        <br />
-        <div>
+            <h3>Scan And Pay The Amount</h3>
+            <img width="300px" height="450px" src="qrcode.jpeg" alt="" />
+            <br />
+            <div>
               <label htmlFor="customername"> UPI Ref. No</label>
               <input
                 type="number"
@@ -219,12 +229,12 @@ export const Details = () => {
                 value={formData.upiRef}
                 onChange={handleInputChange}
               />
-        </div>
-      </div>
+            </div>
+          </div>
 
           <br />
           <button onClick={handleConfirmClick}>Book Ticket</button>
-          <button style={{marginLeft:'20px'}} onClick={handleCancel}>Cancel</button>
+          <button style={{ marginLeft: '20px' }} onClick={handleCancel}>Cancel</button>
 
         </div>
       )}

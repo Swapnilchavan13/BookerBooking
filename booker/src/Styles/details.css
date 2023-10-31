@@ -113,3 +113,8 @@ button:hover {
   font-weight: bold;
   color: black;
 }
+
+.genderdiv{
+  display: flex;
+  gap: 10px;
+}
