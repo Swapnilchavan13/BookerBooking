@@ -1,6 +1,7 @@
 /* Login.css */
 .login-container {
     width: 300px;
+    color: black;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
