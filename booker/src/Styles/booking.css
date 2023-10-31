@@ -256,4 +256,8 @@
     text-align: center;
     justify-content: center;
   }
+  
+  .popup-content * {
+    color: black !important;
+  }
 }
