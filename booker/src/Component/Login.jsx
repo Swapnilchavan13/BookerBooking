@@ -13,7 +13,6 @@ export const Login = () => {
   const [movies, setMovies] = useState([]);
   const audioRef = useRef(null);
 
-
   // Fetch movie data from the API
   useEffect(() => {
     axios.get('http://62.72.59.146:3005/moviedata')
@@ -79,37 +78,35 @@ export const Login = () => {
       document.removeEventListener('DOMContentLoaded', handleDOMContentLoaded);
     };
   }, []);
-  
+
   return (
-    <body id='hero'>
-    <div className="login-container">
-    <div className="login-form">
-      <img src="https://cinemass.vercel.app/_next/static/media/cinema-logo.a5a66603.svg" alt="" />
-      {/* <h1>Login</h1> */}
-      <input
-        type="text"
-        name="loginId"
-        placeholder="Login ID"
-        value={loginData.loginId}
-        onChange={handleInputChange}
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={loginData.password}
-        onChange={handleInputChange}
-      />
-      <button className='loginbtn' onClick={handleLogin}>Login</button>
-      {authenticated}
-    </div>
-      
-    </div>
+    <>
+      <div className="login-container">
+        <div className="login-form">
+          <img src="https://cinemass.vercel.app/_next/static/media/cinema-logo.a5a66603.svg" alt="" />
+          {/* <h1>Login</h1> */}
+          <input
+            type="text"
+            name="loginId"
+            placeholder="Login ID"
+            value={loginData.loginId}
+            onChange={handleInputChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={loginData.password}
+            onChange={handleInputChange}
+          />
+          <button className='loginbtn' onClick={handleLogin}>Login</button>
+          {authenticated}
+        </div>
+      </div>
 
-    <audio ref={audioRef} src="cinemass.mp3" autoPlay/>
+      <audio ref={audioRef} src="cinemass.mp3" autoPlay />
 
-
-    <div className="background-posters">
+      <div className="background-posters">
         {/* Display movie posters as background images */}
         {movies.map((movie, index) => (
           <div
@@ -119,9 +116,7 @@ export const Login = () => {
           ></div>
         ))}
       </div>
-
-
-    </body>
+    </>
 
   );
 };
