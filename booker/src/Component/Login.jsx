@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/login.css';
@@ -9,6 +9,21 @@ export const Login = () => {
     loginId: '',
     password: '',
   });
+
+  const [movies, setMovies] = useState([]);
+  const audioRef = useRef(null);
+
+
+  // Fetch movie data from the API
+  useEffect(() => {
+    axios.get('http://62.72.59.146:3005/moviedata')
+      .then((response) => {
+        setMovies(response.data);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch movie data:', error);
+      });
+  }, []);
 
   // Check if the user is already authenticated on component mount
   const [authenticated, setAuthenticated] = useState(localStorage.getItem('authenticated') === 'true');
@@ -24,6 +39,7 @@ export const Login = () => {
 
   const handleLogin = async () => {
     const { loginId, password } = loginData;
+    setAuthenticated(true);
 
     try {
       const response = await axios.get('http://62.72.59.146:3005/theatredata');
@@ -32,7 +48,6 @@ export const Login = () => {
       );
 
       if (validUser) {
-        setAuthenticated(true);
         setUser(validUser); // Pass the user data to the Home component
         navigate('/home');
         // Store authentication state and user data in localStorage
@@ -50,9 +65,27 @@ export const Login = () => {
     }
   };
 
+  useEffect(() => {
+    // Add an event listener to play audio after the page is fully loaded
+    const handleDOMContentLoaded = () => {
+      const audioElement = audioRef.current;
+      if (audioElement) {
+        audioElement.play();
+      }
+    };
+    document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('DOMContentLoaded', handleDOMContentLoaded);
+    };
+  }, []);
+  
   return (
+    <body id='hero'>
     <div className="login-container">
-      <h1>Login</h1>
+    <div className="login-form">
+      <img src="https://cinemass.vercel.app/_next/static/media/cinema-logo.a5a66603.svg" alt="" />
+      {/* <h1>Login</h1> */}
       <input
         type="text"
         name="loginId"
@@ -70,5 +103,25 @@ export const Login = () => {
       <button className='loginbtn' onClick={handleLogin}>Login</button>
       {authenticated}
     </div>
+      
+    </div>
+
+    <audio ref={audioRef} src="cinemass.mp3" autoPlay/>
+
+
+    <div className="background-posters">
+        {/* Display movie posters as background images */}
+        {movies.map((movie, index) => (
+          <div
+            className={`movie-pos poster${index + 1}`}
+            key={movie._id}
+            style={{ backgroundImage: `url(${movie.poster})` }}
+          ></div>
+        ))}
+      </div>
+
+
+    </body>
+
   );
 };

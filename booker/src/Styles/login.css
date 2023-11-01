@@ -2,13 +2,21 @@
 .login-container {
     width: 300px;
     color: black;
-    margin: 0 auto;
+    margin: auto;
+    margin-top:150px ;
+    justify-content: center;
+    text-align: center;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     background-color: #fff;
     text-align: center;
+    overflow: hidden; /* Ensure the login form doesn't overflow the viewport */
+
+  }
+  body{
+    background-color: #470408;
   }
   
   h1 {
@@ -45,3 +53,88 @@
     margin-top: 20px;
     font-size: 16px;
   }
+
+
+  .background-posters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .movie-pos {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: posterAnimation 20s infinite linear;
+  }
+  
+  .poster1 {
+    animation-delay: 0s;
+  }
+  
+  .poster2 {
+    animation-delay: 4s;
+  }
+  .poster3 {
+    animation-delay: 8s;
+  }
+  
+  .poster4 {
+    animation-delay: 12s;
+  }
+  .poster5 {
+    animation-delay: 16s;
+  }
+  
+  .poster6 {
+    animation-delay: 20s;
+  }
+  .poster7 {
+    animation-delay: 24s;
+  }
+  
+  .poster8 {
+    animation-delay: 28s;
+  }
+  
+  /* Define styles for posters 3 through 7 similarly */
+  
+  @keyframes posterAnimation {
+    0% {
+      opacity: 0;
+      transform: scale(1.2);
+    }
+    20% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    80% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.2);
+    }
+  }
+  
+
+  .login-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure the login form stays on top of the background */
+    background: rgba(99, 2, 2, 0.6); /* Add a semi-transparent white background to make the login form more readable */
+    padding: 20px;
+    border-radius: 10px;
+    width: 280px;
+    text-align: center;
+  }
+  

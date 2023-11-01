@@ -34,13 +34,14 @@ export const Details = () => {
   };
 
   const handleConfirmClick = () => {
-    if (formData.paymentMethod === "UPI" && !formData.upiRef) {
-      alert('Please fill the Upi ref Number')
-      return;
-    }
 
     if (!formData.customerMobile || !formData.customerName) {
       alert('Please fill in both customer name and mobile number.');
+      return;
+    }
+
+    if (formData.paymentMethod === "UPI" && !formData.upiRef) {
+      alert('Please fill the Upi ref Number')
       return;
     }
 
