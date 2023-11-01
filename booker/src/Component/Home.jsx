@@ -107,11 +107,14 @@ const slidePrev = () => {
     const dateObj = new Date(date);
     const dayOfWeek = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(dateObj);
 
+
+
+    
     return (
       <button
-        key={date}
-        onClick={() => handleDateSelect(date)}
-        className={selectedDate === date ? 'active' : ''}
+      key={date}
+      onClick={() => handleDateSelect(date)}
+      className={selectedDate === date ? 'active' : ''}
       >
         {`${dayOfWeek.toLocaleUpperCase()} ${formatDate(date)}`}
       </button>
@@ -128,10 +131,11 @@ const slidePrev = () => {
   const yyyy = today.getFullYear();
   let mm = today.getMonth() + 1; // Months start at 0!
   let dd = today.getDate();
-  if (dd < 10) dd = '0' + dd;
+  if (dd < 10) dd =  dd;
   if (mm < 10) mm = '0' + mm;
   const formattedToday = mm + '/' + dd + '/' + yyyy;
   // console.log(moviee)
+  // console.log(selectedDate, formattedToday, currTime)
 
   return (
     <div className="home-container">
