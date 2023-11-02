@@ -7,14 +7,10 @@
   justify-content: center;
   text-align: center;
   padding: 20px;
-  /* border: 1px solid #ccc; */
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  /* background-color: #fff; */
   text-align: center;
   overflow: hidden;
-  /* Ensure the login form doesn't overflow the viewport */
-
 }
 
 body {
@@ -55,7 +51,6 @@ p {
   margin-top: 20px;
   font-size: 16px;
 }
-
 
 .background-posters {
   position: fixed;
@@ -132,7 +127,6 @@ p {
   }
 }
 
-
 .login-form {
   position: fixed;
   top: 50%;
@@ -144,4 +138,12 @@ p {
   border-radius: 10px;
   width: 280px;
   text-align: center;
+}
+
+.golog a{
+  color: white;
+}
+
+.golog{
+  padding: 20px;
 }

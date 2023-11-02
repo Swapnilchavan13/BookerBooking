@@ -107,9 +107,6 @@ const slidePrev = () => {
     const dateObj = new Date(date);
     const dayOfWeek = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(dateObj);
 
-
-
-    
     return (
       <button
       key={date}
@@ -140,10 +137,10 @@ const slidePrev = () => {
   return (
     <div className="home-container">
       <div className='maindiv'>
-        <h1>Hello 👋, {user.name}!</h1>
+        <img src="https://cinemass.vercel.app/_next/static/media/cinema-logo.a5a66603.svg" alt="" />
 
         <Link to="/login">
-          <button className='loginbtn' onClick={onLogout}>Logout</button>
+          <button className='logoutbtn' onClick={onLogout}>Logout</button>
         </Link>
       </div>
       <h4>Location: {user.location}</h4>
@@ -175,7 +172,7 @@ const slidePrev = () => {
               <div className='mvdiv' key={movie._id}>
                 {Object.keys(movie.movieData).map((movieName) => {
                   return (
-                    <div key={movieName} className="movie-poster">
+                    <div key={movieName} id='mvp' className="movie-poster">
                       <div
                         onClick={() => handleMovieSelect(movieName)}
                         className={selectedMovie === movieName ? 'active' : 'mvbtn'}
@@ -185,7 +182,7 @@ const slidePrev = () => {
                           <div key={index} className="movie-item">
                             {item.moviename === movieName && (
                               <div>
-                                <img className='img' width="80px" height="120px" src={item.poster} alt={item.name} />
+                                <img className='img' width="80px" height="140px" src={item.poster} alt={item.name} />
                               </div>
                             )}
                           </div>
@@ -247,7 +244,6 @@ const slidePrev = () => {
           />
         </div>
       )}
-
     </div>
   );
 };
