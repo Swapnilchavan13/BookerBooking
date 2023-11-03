@@ -145,7 +145,7 @@ const slidePrev = () => {
       </div>
       <h4>Location: {user.location}</h4>
       {/* <h4>Cinema`s name: {user.name}</h4> */}
-      <h3>Select a date: </h3>
+      <h3>Select a date: {selectedDate}</h3>
       {/* <div className="date-buttons">
         {dateButtons}
       </div> */}
@@ -217,7 +217,6 @@ const slidePrev = () => {
                   // Set the first available non-disabled showtime as the default
                   handleShowtimeSelect(showtime);
                 }
-
                 return (
                   <div key={showtime}>
                     <input

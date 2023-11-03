@@ -141,9 +141,32 @@ p {
 }
 
 .golog a{
-  color: white;
+  color: rgb(126, 14, 14);
 }
 
 .golog{
+  background-color: #fff;
   padding: 20px;
+}
+
+.golog {
+  border: 30px solid transparent;
+  padding: 15px;
+  text-align: center;
+  border-image: url('https://i.postimg.cc/3JGscFF2/Border.png') 30 round;
+  /* height: 630px; */
+
+}
+.golog h1{
+  color: #81151c;
+  font-size: 50px;
+  text-align: center;
+}
+
+.golog button{
+  text-align: center;
+  background-color: #81151c;
+  font-size: 10px;
+  width: 200px;
+  border-radius: 20px;
 }
