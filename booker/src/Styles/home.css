@@ -1,6 +1,6 @@
 .home-container {
     text-align: center;
-    background-color: #270f2c;
+    background-color: #5B031B;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     /* border: 1px solid black; */
-    background-color: #3f0b32;
+    background-color: #f5eff1;
     border-radius: 5px;
 }
 .maindiv h1{
@@ -34,7 +34,7 @@
 .date-buttons>button {
     width: 60px;
     color: white;
-    background-color: #cf565c;
+    /* background-color: #cf565c; */
     margin: auto;
     font-size: 15px;
 }
@@ -66,7 +66,7 @@ button:hover {
 
 .mvbtn {
     margin: auto;
-    background-color: #771717;
+    /* background-color: #771717; */
     color: white;
 }
 
@@ -89,7 +89,7 @@ button:hover {
 
 .active {
     color: white !important;
-    background-color: #660e3a !important;
+    background-color: #660e12 !important;
 
 }
 
@@ -122,7 +122,7 @@ img{
   }
 
   .date-buttons > :first-child , .date-buttons > :nth-child(3) {
-    background-color: #6d1a41;
+    /* background-color: #6d1a41; */
     font-size: 30px;
     margin-top: 11px;
   }
@@ -144,7 +144,8 @@ img{
     text-align: center;
     padding: 0.5rem;
     border: none;
-    background-color: #522149;
+    background-color: white;
+    color: black;
     cursor: pointer;
     outline: none;
     transition: background-color 0.3s;
@@ -155,7 +156,7 @@ img{
   
   /* Active date button */
   .date-buttons button.active {
-    background-color: #007bff; /* Adjust the background color for the active button */
+    background-color: #270204; /* Adjust the background color for the active button */
     color: #fff;
   }
   
