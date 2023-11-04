@@ -84,7 +84,7 @@ export const Login = () => {
       <div className="login-container">
         <div className="login-form">
           <img src="https://cinemass.vercel.app/_next/static/media/cinema-logo.a5a66603.svg" alt="" />
-          {/* <h1>Login</h1> */}
+          <h1>Login</h1>
           <input
             type="text"
             name="loginId"

@@ -92,7 +92,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
         <div id="scr">Screen</div> 
         <br />
         {formatted.map(([row, count]) => (
-          <div key={row} className="seat-row">
+          <div key={row} id='srow' className="seat-row">
             <h3>{row}</h3>
             {[...Array(count).keys()].map((seatNumber) => {
               const seatNumberStr = row + (seatNumber + 1);
@@ -121,9 +121,11 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
         ))}
       </div>
       <div>
-        <div>
-          <h5>Selected Seats : {selectedSeats.join(', ')}</h5>
-          <h5>Total Amount : Rs. {selectedSeats.length * 100} /-</h5>
+        <div className='seatsnamount'>
+          <h5>Selected Seats</h5>
+          <div>{selectedSeats.join(', ')}</div>
+          <h5>Total Amount</h5>
+          <div>Rs. {selectedSeats.length * 100} /-</div>
         </div>
       </div>
 

@@ -129,7 +129,7 @@ export const Details = () => {
           <div>
             <br />
             <div>
-              <label htmlFor="customermobile"> Customer's Mobile</label>
+              <label className='lab' htmlFor="customermobile"> Customer's Mobile</label>
               <input
                 type="number"
                 name="customerMobile"
@@ -141,7 +141,7 @@ export const Details = () => {
             </div>
 
             <div>
-              <label htmlFor="customername"> Customer's Name</label>
+              <label className='lab' htmlFor="customername"> Customer's Name</label>
               <input
                 name="customerName"
                 type="text"
@@ -151,77 +151,40 @@ export const Details = () => {
                 onChange={handleInputChange}
               />
             </div>
-
+<br />
             <div className='genderdiv'>
-              {/* <label>Gender</label> */}
-              <br />
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <input
-                  type="radio"
-                  name="gender"
-                  id="male"
-                  value="Male"
-                  checked={formData.gender === 'Male'}
-                  onChange={handleInputChange}
-                />
-                <label htmlFor="male">Male</label>
-              </div>
+  <label className='lab'>Gender</label>
+  <select
+    name="gender"
+    value={formData.gender}
+    onChange={handleInputChange}
+  >
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+</div>
+<br />
+<div className='genderdiv'>
+  <label className='lab'>Payment Method</label>
+  <select
+    name="paymentMethod"
+    value={formData.paymentMethod}
+    onChange={handleInputChange}
+  >
+    <option value="UPI">UPI</option>
+    <option value="Cash">Cash</option>
+  </select>
+  </div>
+  </div>
 
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <input
-                  type="radio"
-                  name="gender"
-                  id="female"
-                  value="Female"
-                  checked={formData.gender === 'Female'}
-                  onChange={handleInputChange}
-                />
-                <label htmlFor="female">
-                  Female
-                </label>
-              </div>
-
-            </div>
-
-            <div className='genderdiv'>
-              <br />
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  id="upi"
-                  value="UPI"
-                  checked={formData.paymentMethod === 'UPI'}
-                  onChange={handleInputChange}
-                />
-                <label htmlFor="upi">
-                  UPI</label>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-
-                <input
-                  type="radio"
-                  id="cash"
-                  value="Cash"
-                  name="paymentMethod"
-                  checked={formData.paymentMethod === 'Cash'}
-                  onChange={handleInputChange}
-                />
-                <label htmlFor="cash">
-                  Cash</label>
-              </div>
-
-            </div>
-          </div>
           <br />
           <div className={formData.paymentMethod === 'Cash' ? 'scanner hidden' : 'scanner'}>
-            <h3>Scan And Pay The Amount</h3>
+            <h3>Scan & Pay!</h3>
             <img width="300px" height="450px" src="qrcode.jpeg" alt="" />
             <br />
+            <br />
             <div>
-              <label htmlFor="customername"> UPI Ref. No</label>
+              <label  className='lab' htmlFor="customername"> UPI Ref. No</label>
               <input
                 type="number"
                 name="upiRef"
@@ -234,8 +197,9 @@ export const Details = () => {
           </div>
 
           <br />
-          <button onClick={handleConfirmClick}>Book Ticket</button>
-          <button style={{ marginLeft: '20px' }} onClick={handleCancel}>Cancel</button>
+          
+          <button className='bookigbtn' onClick={handleConfirmClick}>Confirm Booking</button>
+          <button className='bookigbtn' style={{ marginLeft: '20px' }} onClick={handleCancel}>Cancel</button>
 
         </div>
       )}

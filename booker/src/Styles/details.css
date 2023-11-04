@@ -20,13 +20,25 @@
   color: rgb(173, 171, 171);
 }
 
+
 .container input {
-  background-color: #793636;
-  border: 1px solid rgb(160, 14, 14);
+  background-color: #5B031B;
+  border: 2px solid white;
   color: white;
-  border-radius: 20px;
-  height: 30px;
+  border-radius: 2px;
+  height: 25px;
+  margin-top: 8px; /* Adjust this value to control the vertical spacing */
 }
+
+.lab {
+  background-color: white;
+  color: #5B031B;
+  border-radius: 10px;
+  padding: 0 5px;
+  position: absolute;
+  z-index: 1;
+}
+
 
 button {
   background-color: #007bff;
@@ -82,32 +94,31 @@ button:hover {
 }
 
 .styled-table {
-  border: 2px solid black;
+  border: 2px solid white;
+  background-color: white;
   border-radius: 5px;
+  padding: 15px;
   width: 100%;
 }
 
 .styled-table th {
-  background-color: rgb(153, 79, 79);
+  border-radius: 5px;
+  background-color: #5B031B;
   color: white;
   padding: 8px;
+  margin-top: 10px;
   text-align: left;
 }
 
 .styled-table td {
-  border: 1px solid black;
+  border-radius: 5px;
+  border: 2px solid #5B031B;
   padding: 8px;
+  margin-top: 10px;
   text-align: left;
-}
-
-.styled-table tr:nth-child(even) {
-  background-color: rgb(173, 54, 54);
-  color: white;
-}
-
-.styled-table tr:nth-child(odd) {
-  background-color: rgb(110, 52, 52);
-  color: white;
+  color: #5B031B;
+  background-color:white;
+  font-weight: bolder;
 }
 
 .styled-table td:first-child {
@@ -118,4 +129,24 @@ button:hover {
 .genderdiv{
   display: flex;
   gap: 10px;
+  color: #5B031B;
+}
+
+.genderdiv select{
+  background-color: #5B031B;
+  border: 2px solid white;
+  width: 310px;
+  height: 45px;
+  margin-top: 10px;
+}
+
+.genderdiv label{
+  border: 1px solid black;
+}
+
+.bookigbtn{
+  color: #5B031B;
+  background-color: white;
+  font-weight: bolder;
+  border-radius: 20px;
 }

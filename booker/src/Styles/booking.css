@@ -28,6 +28,7 @@ div{
   background-color: rgb(247, 234, 234);
 }
 
+
 .seatindication {
   width: fit-content;
   padding-left: 200px;
@@ -40,20 +41,19 @@ div{
 }
 
 .selected {
-  background-color: green;
-  color: white;
+  background-color: green !important;
+  color: white !important;
 }
 
 .seat-row {
   display: flex;
   gap: 3px;
   margin: auto;
-
 }
 
 .booked {
-  background-color: rgb(184, 7, 7);
-  color: white;
+  background-color: rgb(177, 26, 26) !important;
+  color: white !important;
   pointer-events: none;
 }
 
@@ -116,6 +116,10 @@ div{
   margin-left: 0;
 }
 
+#srow h3{
+  color: white;
+}
+
 
 /* Mobile-responsive styles */
 
@@ -151,6 +155,8 @@ div{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin: auto;
     padding: 10px;
+    color: #5B031B;
+    font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
     border: 1px solid black;
@@ -183,11 +189,13 @@ div{
     margin-bottom: 60px;
     width: 70%;
   }
+  
 
   .seat-row div {
     width: 12px;
     height: 15px;
     font-size: 13px;
+    
   }
 
   .column {
@@ -270,6 +278,43 @@ div{
 
   .img{
     width:100px
+  }
+
+  #srow{
+    background-color: #5B031B;
+    border: none;
+  }
+  #srow div{
+    background-color: white;
+  }
+
+  .seatsnamount h5{
+    border: 1px solid white;
+    color: #5B031B;
+    background-color: white;
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    margin-top: 30px;
+    position: relative;
+  }
+  .seatsnamount div{
+    border: 1px solid white;
+    width: 70%;
+    margin: auto;
+    margin-top: -15px;
+    padding: 25px 18px 18px 18px;
+    font-size: 12px;
+  }
+  .bookbutton{
+    background-color: white;
+    color: #5B031B;
+    font-weight: bolder;
+    border-radius: 25px;
+    width: 80%;
+    margin-top: 40px;
   }
   
 }

@@ -145,13 +145,13 @@ const slidePrev = () => {
       </div>
       <h4>Location: {user.location}</h4>
       {/* <h4>Cinema`s name: {user.name}</h4> */}
-      <h3>Select a date: {selectedDate}</h3>
+      <h3>Select a Date: {selectedDate}</h3>
       {/* <div className="date-buttons">
         {dateButtons}
       </div> */}
 
 <div className="date-buttons">
-      <button id='slidebtn' onClick={slidePrev}>{"<"}</button>
+      <button id='slidebtn' onClick={slidePrev}>{"◀"}</button>
       <div className="slider">
         <div
           className="slider-content"
@@ -160,7 +160,7 @@ const slidePrev = () => {
           {dateButtons}
         </div>
       </div>
-      <button onClick={slideNext}>{">"}</button>
+      <button onClick={slideNext}>{"▶"}</button>
     </div>
 
       {selectedDate && (
@@ -197,11 +197,12 @@ const slidePrev = () => {
             ))}
         </div>
       )}
-
+<br />
+<br />
       {selectedMovie && (
         <div>
           {/* <h3>Movie: {selectedMovie}</h3> */}
-          <h4>Showtimes:</h4>
+          <h4 className='sshowtime'>Select Showtimes</h4>
           <div className="showdiv">
             {filteredMovies
               .find((movie) => movie.date === selectedDate)

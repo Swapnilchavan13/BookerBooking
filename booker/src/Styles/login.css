@@ -12,6 +12,9 @@
   text-align: center;
   overflow: hidden;
 }
+.login-container h1{
+  margin-top: -30px;
+}
 
 body {
   background-color: #470408;
