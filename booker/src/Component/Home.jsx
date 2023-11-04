@@ -214,10 +214,11 @@ const slidePrev = () => {
                   (showtime === "6:00 PM" && selectedDate === formattedToday && 18 <= currTime) ||
                   (showtime === "9:00 PM" && selectedDate === formattedToday && 21 <= currTime);
 
-                if (!isDisabled && selectedShowtime === null) {
+                  if (!isDisabled && selectedShowtime === null) {
                   // Set the first available non-disabled showtime as the default
-                  handleShowtimeSelect(showtime);
+                  handleShowtimeSelect(showtime); 
                 }
+
                 return (
                   <div key={showtime}>
                     <input
