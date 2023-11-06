@@ -4,6 +4,7 @@ import '../Styles/home.css';
 import '../Styles/now.css';
 
 export const NowandComming = ({ user, onLogout }) => {
+
   const [authenticated, setAuthenticated] = useState(false);
   const [moviee, setMovie] = useState([]);
   const [nowShowingClicked, setNowShowingClicked] = useState(true);
@@ -39,6 +40,16 @@ export const NowandComming = ({ user, onLogout }) => {
     }
   }, [user.name]);
 
+  const Bookhandle = (movieName) => {
+    // Save the selected movie name in localStorage
+    localStorage.setItem('selMovie', movieName);
+  
+    // You can also navigate to a different page if needed
+    // Example: history.push('/booking');
+  };
+  
+  
+
   return (
     <div className="home-container">
       <div className='maindiv'>
@@ -48,7 +59,6 @@ export const NowandComming = ({ user, onLogout }) => {
         </Link>
       </div>
       <h4>Location: {user.location}</h4>
-
       <div className='adbook'>
         <h4
           onClick={toggleNowShowing}
@@ -59,7 +69,7 @@ export const NowandComming = ({ user, onLogout }) => {
         >
           Now Showing {nowShowingClicked ? '🔼' : '🔽'}
         </h4>
-        <h4
+        {/* <h4
           onClick={toggleComingSoon}
           style={{
             backgroundColor: comingSoonClicked ? 'white' : 'initial',
@@ -67,7 +77,7 @@ export const NowandComming = ({ user, onLogout }) => {
           }}
         >
           Coming Soon {comingSoonClicked ? '🔼' : '🔽'}
-        </h4>
+        </h4> */}
       </div>
 
       <div ref={containerRef} className="movie-container">
@@ -78,7 +88,10 @@ export const NowandComming = ({ user, onLogout }) => {
                 <div className='imgdiv'>
                   <h3>{item.moviename}</h3>
                   <img src={item.poster} alt={item.name} />
-                  <button>Book Now</button>
+                  <Link to="/home">
+                  <button onClick={() => Bookhandle(item.moviename)}>Book Now</button>
+
+                  </Link>
                 </div>
                 <br />
               </div>
@@ -87,9 +100,26 @@ export const NowandComming = ({ user, onLogout }) => {
         )}
 
         {comingSoonClicked && (
-          <div>
-            <h1>Coming Soon Movies:</h1>
-            {/* Add code to display coming soon movie names */}
+          <div ref={containerRef} className="movie-container">
+          {comingSoonClicked && (
+            // <div>
+            //   {moviee.map((item, index) => (
+            //     <div key={index} className="movie-item">
+            //       <div className='imgdiv'>
+            //         <h3>{item.moviename}</h3>
+            //         <img src={item.poster} alt={item.name} />
+            //         <Link to="/home">
+            //         <button onClick={Bookhandle}>Book In Advance</button>
+            //         </Link>
+            //       </div>
+            //       <br />
+            //     </div>
+            //   ))}
+            // </div>
+            <div>
+             <h1>No Upcoming Movies...</h1>
+            </div>
+          )}
           </div>
         )}
       </div>

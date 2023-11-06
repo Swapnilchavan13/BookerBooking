@@ -44,7 +44,6 @@ export const Home = ({ user, onLogout }) => {
     }
 
     // Fetch data from your API endpoint
-
     fetch('http://62.72.59.146:3005/allocatedata')
       .then((response) => response.json())
       .then((data) => {
@@ -54,9 +53,41 @@ export const Home = ({ user, onLogout }) => {
 
         // Set the selectedDate to the first available date
         const firstAvailableDate = filteredData.find((movie) => new Date(movie.date) >= currentDate);
-        if (firstAvailableDate) {
-          setSelectedDate(firstAvailableDate.date);
-        }
+        
+        const smov = localStorage.getItem("selMovie");
+        // console.log(smov);
+
+const fmovie = filteredData.find((movie) => {
+  // Get the movie names from the movieData object
+  const movieNames = Object.keys(movie.movieData);
+
+  // Check if the stored movie name (smov) exists in the movie names
+  if (movieNames.includes(smov)) {
+    return true;
+  }
+
+  return false;
+});
+
+// console.log(fmovie);
+
+if (fmovie) {
+  const selectedDate = fmovie.date;
+  // console.log('Selected Date:', selectedDate);
+  setSelectedDate(selectedDate);
+
+  return selectedDate;
+} else {
+  // Handle the case when the movie name doesn't match any in the filteredData
+  // console.log('Movie not found in filteredData');
+  // You can return a default value or handle it as needed
+  if (firstAvailableDate) {
+    setSelectedDate(firstAvailableDate.date);
+  }
+  return null; // Or any other appropriate value
+}
+
+
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -145,7 +176,6 @@ const slidePrev = () => {
         </Link>
       </div>
       <h4>Location: {user.location}</h4>
-
       <h3>Select a Date: {selectedDate}</h3>
      <div className="date-buttons">
       <button id='slidebtn' onClick={slidePrev}>{"◀"}</button>
