@@ -210,6 +210,13 @@ img{
    background-color: white;
    font-weight: bolder;
    color: #5B031B
-   /* margin-left: 260px; */
-   /* margin-top: -200px; */
+  }
+  .adbook{
+    display: flex;
+    margin: auto;
+    width: fit-content;
+    margin-top: -10px;
+  }
+  .adbook h4{
+    padding: 7px 20px 7px 7px;
   }

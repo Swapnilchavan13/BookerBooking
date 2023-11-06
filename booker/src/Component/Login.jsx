@@ -48,7 +48,7 @@ export const Login = () => {
 
       if (validUser) {
         setUser(validUser); // Pass the user data to the Home component
-        navigate('/home');
+        navigate('/nowandcomming');
         // Store authentication state and user data in localStorage
         localStorage.setItem('authenticated', 'true');
         localStorage.setItem('user', JSON.stringify(validUser));

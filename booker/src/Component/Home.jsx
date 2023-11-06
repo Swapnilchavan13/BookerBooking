@@ -11,6 +11,7 @@ export const Home = ({ user, onLogout }) => {
   const [authenticated, setAuthenticated] = useState(false); // Initialize as not authenticated
   const [moviee, setMovie] = useState([]);
 
+
   useEffect(() => {
     if (selectedDate && movieData.length > 0 && !selectedMovie) {
       const moviesForSelectedDate = movieData.find(movie => movie.date === selectedDate);
@@ -144,13 +145,9 @@ const slidePrev = () => {
         </Link>
       </div>
       <h4>Location: {user.location}</h4>
-      {/* <h4>Cinema`s name: {user.name}</h4> */}
-      <h3>Select a Date: {selectedDate}</h3>
-      {/* <div className="date-buttons">
-        {dateButtons}
-      </div> */}
 
-<div className="date-buttons">
+      <h3>Select a Date: {selectedDate}</h3>
+     <div className="date-buttons">
       <button id='slidebtn' onClick={slidePrev}>{"◀"}</button>
       <div className="slider">
         <div
@@ -186,7 +183,6 @@ const slidePrev = () => {
                               </div>
                             )}
                           </div>
-
                         ))}
                       </div>
 

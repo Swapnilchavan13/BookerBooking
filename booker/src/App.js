@@ -5,6 +5,7 @@ import { Home } from './Component/Home';
 import { useState, useEffect } from 'react';
 import { Details } from './Component/Details';
 import { Gotologin } from './Component/Gotologin';
+import { NowandComming } from './Component/NowandComming';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -45,6 +46,19 @@ function App() {
             />
           }
         />
+
+<Route
+          path="/nowandcomming"
+          element={
+            authenticated ? (
+              <NowandComming user={user} onLogout={handleLogout} authenticated={authenticated} />
+            ) : (
+              <Login authenticated={authenticated} />
+            )
+          }
+        />
+
+
         <Route
           path="/home"
           element={
