@@ -32,16 +32,32 @@ export const Details = () => {
       [name]: value,
     });
   };
+//Open the Popup
+  function openPopup(message) {
+    var popup = document.getElementById('customPopup');
+    var popupMessage = document.getElementById('popupMessage');
+    popup.style.display = 'block';
+    popupMessage.textContent = message;
+  }
+  
+  // Close the custom popup
+  function closePopup() {
+    var popup = document.getElementById('customPopup');
+    popup.style.display = 'none';
+      navigate('/details');
+  }
 
   const handleConfirmClick = () => {
 
     if (!formData.customerMobile || !formData.customerName) {
-      alert('Please fill in both customer name and mobile number.');
+      var message = 'Please fill in both customer name and mobile number.';
+      openPopup(message);
       return;
     }
 
     if (formData.paymentMethod === "UPI" && !formData.upiRef) {
-      alert('Please fill the Upi ref Number')
+      var message = 'Please fill the Upi ref Number';
+      openPopup(message);
       return;
     }
 
@@ -62,10 +78,13 @@ export const Details = () => {
         .then((response) => response.json())
         .then((data) => {
           if (data.message === 'Data stored successfully.') {
-            alert('Success: Tickets Booked successfully.');
+            var message = 'Success: Tickets Booked successfully.';
+            openPopup(message);
+            
             setIsModalOpen(true);
           } else {
-            alert('Sorry Seats are already booked');
+            var message = 'Sorry Seats are already booked'
+            openPopup(message);
             navigate('/home');
           }
         })
@@ -184,7 +203,7 @@ export const Details = () => {
             <br />
             <br />
             <div>
-              <label  className='lab' htmlFor="customername"> UPI Ref. No</label>
+              <label className='lab' htmlFor="customername"> UPI Ref. No</label>
               <input
                 type="number"
                 name="upiRef"
@@ -200,7 +219,13 @@ export const Details = () => {
           
           <button className='bookigbtn' onClick={handleConfirmClick}>Confirm Booking</button>
           <button className='bookigbtn' style={{ marginLeft: '20px' }} onClick={handleCancel}>Cancel</button>
-
+         
+          <div id="customPopup" className="modal">
+        <div className="modal-content">
+          <span className="close" onClick={closePopup}>&times;</span>
+          <p id="popupMessage"></p>
+        </div>
+      </div>
         </div>
       )}
 

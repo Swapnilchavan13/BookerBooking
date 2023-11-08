@@ -86,8 +86,6 @@ if (fmovie) {
   }
   return null; // Or any other appropriate value
 }
-
-
       })
       .catch((error) => {
         console.error('Error fetching data:', error);

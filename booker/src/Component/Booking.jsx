@@ -58,21 +58,50 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
     seats: selectedSeats.sort(),
   };
 
-  const BookTicket = () => {
-    if (selectedSeats.length > 0 && showtime) {
-      alert(`Welcome to ${user.name}! We are excited to host you for the screening of ${selectedMovie} on ${selectedDate} at ${showtime}. Your reservation includes the following selected seats: ${selectedSeats}.`);
-      localStorage.setItem('data', JSON.stringify(data));
-      navigate('/details');
-    } else {
-      alert('Please select Showtime.');
-    }
-  };
+  // const BookTicket = () => {
+  //   if (selectedSeats.length > 0 && showtime) {
+  //     alert(`Welcome to ${user.name}! We are excited to host you for the screening of ${selectedMovie} on ${selectedDate} at ${showtime}. Your reservation includes the following selected seats: ${selectedSeats}.`);
+  //     localStorage.setItem('data', JSON.stringify(data));
+  //     navigate('/details');
+  //   } else {
+  //     alert('Please select Showtime.');
+  //   }
+  // };
+
+  // Open the custom popup
+function openPopup(message) {
+  var popup = document.getElementById('customPopup');
+  var popupMessage = document.getElementById('popupMessage');
+  popup.style.display = 'block';
+  popupMessage.textContent = message;
+}
+
+// Close the custom popup
+function closePopup() {
+  var popup = document.getElementById('customPopup');
+  popup.style.display = 'none';
+    navigate('/details');
+}
+
+// Usage in your BookTicket function
+const BookTicket = () => {
+  if (selectedSeats.length > 0 && showtime) {
+    var message = `Welcome to ${user.name}! We are excited to host you for the screening of ${selectedMovie} on ${selectedDate} at ${showtime}. Your reservation includes the following selected seats: ${selectedSeats}.`;
+    openPopup(message);
+    localStorage.setItem('data', JSON.stringify(data));
+  } else {
+    openPopup('Please select Showtime.');
+  }
+};
+
+
+
 
   return (
     <div className="booking-system">
       <div className="seats">
         <h4>Selected Movie in Booking: {selectedMovie}</h4>
-        {selectedmv ? (
+        {/* {selectedmv ? (
           <div className='pdiv'>
             <img className='pimg' src={selectedmv.poster} alt={selectedMovie} />
           </div>
@@ -80,7 +109,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
           <div>
             <h4>No movie data found for {selectedMovie}</h4>
           </div>
-        )}
+        )} */}
         <br />
         <div id='bdiv'>
           <div className='bs'></div>
@@ -99,8 +128,8 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
               const isBooked = selectedSeats.includes(seatNumberStr);
               const isSaved = apiData.some((booking) =>
                 booking.tname === user.name &&
-                booking.mname === selectedMovie &&
                 booking.sdate === selectedDate &&
+                booking.mname === selectedMovie &&
                 booking.showtime === showtime &&
                 booking.seats.includes(seatNumberStr)
               );
@@ -128,6 +157,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
           <div>Rs. {selectedSeats.length * 100} /-</div>
         </div>
       </div>
+      
 
       <button
         className="bookbutton"
@@ -136,6 +166,12 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
       >
         Book Tickets
       </button>
+      <div id="customPopup" className="modal">
+        <div className="modal-content">
+          <span className="close" onClick={closePopup}>&times;</span>
+          <p id="popupMessage"></p>
+        </div>
+      </div>
     </div>
   );
 }
