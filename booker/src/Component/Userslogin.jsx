@@ -92,7 +92,7 @@ export const Userslogin = () => {
         </>
       ) : (
         <>
-          <h2 style={styles.heading}>Login</h2>
+          <h2 style={styles.heading}>Booker Login</h2>
           <div>
             <label style={styles.label}>Username:</label>
             <input
