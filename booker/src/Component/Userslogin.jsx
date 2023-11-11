@@ -87,7 +87,7 @@ export const Userslogin = () => {
             Logout
           </button>
           <Link to="/nowandcomming">
-          <h3>Next</h3>
+          <h2 style={{color:'white'}}>Next</h2>
           </Link>
         </>
       ) : (
