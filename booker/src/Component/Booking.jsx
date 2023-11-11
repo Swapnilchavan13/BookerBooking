@@ -32,6 +32,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
   const [apiData, setApiData] = useState([]);
 
   const selectedmv = movie.find((movie) => movie.moviename === selectedMovie);
+  const bookername = localStorage.getItem('bookerusers')
 
   useEffect(() => {
     fetch('http://62.72.59.146:3005/bookingdata')
@@ -51,6 +52,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
   };
 
   const data = {
+    booker: bookername,
     tname: user.name,
     mname: selectedMovie,
     sdate: selectedDate,

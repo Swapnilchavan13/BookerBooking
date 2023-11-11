@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { Details } from './Component/Details';
 import { Gotologin } from './Component/Gotologin';
 import { NowandComming } from './Component/NowandComming';
+import { Userslogin} from './Component/Userslogin';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -46,6 +47,8 @@ function App() {
             />
           }
         />
+
+<Route path="/userslogin" element={<Userslogin />} />
 
 <Route
           path="/nowandcomming"
