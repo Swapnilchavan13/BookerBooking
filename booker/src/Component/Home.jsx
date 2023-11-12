@@ -232,11 +232,11 @@ const slidePrev = () => {
               .find((movie) => movie.date === selectedDate)
               .movieData[selectedMovie].map((showtime) => {
                 const isDisabled =
-                  (showtime === "9:00 AM" && selectedDate === formattedToday && 9 <= currTime) ||
-                  (showtime === "12:00 PM" && selectedDate === formattedToday && 12 <= currTime) ||
-                  (showtime === "3:00 PM" && selectedDate === formattedToday && 15 <= currTime) ||
-                  (showtime === "6:00 PM" && selectedDate === formattedToday && 18 <= currTime) ||
-                  (showtime === "9:00 PM" && selectedDate === formattedToday && 21 <= currTime);
+                  (showtime === "9:00 AM" && selectedDate === formattedToday && 10 <= currTime) ||
+                  (showtime === "12:00 PM" && selectedDate === formattedToday && 13 <= currTime) ||
+                  (showtime === "3:00 PM" && selectedDate === formattedToday && 16 <= currTime) ||
+                  (showtime === "6:00 PM" && selectedDate === formattedToday && 19 <= currTime) ||
+                  (showtime === "9:00 PM" && selectedDate === formattedToday && 22 <= currTime);
 
                   if (!isDisabled && selectedShowtime === null) {
                   // Set the first available non-disabled showtime as the default
