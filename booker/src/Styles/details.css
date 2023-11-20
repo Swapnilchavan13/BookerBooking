@@ -182,3 +182,11 @@ button:hover {
   font-size: 30px;
   cursor: pointer;
 }
+
+.invalid {
+  border: 1px solid red;
+}
+
+#customPopup{
+  z-index: 999999;
+}

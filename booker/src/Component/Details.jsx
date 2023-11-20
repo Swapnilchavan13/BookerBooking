@@ -6,6 +6,10 @@ export const Details = () => {
   const navigate = useNavigate();
   const [savedData, setSavedData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobileValid, setIsMobileValid] = useState(true);
+  const [isUpiValid, setIsUpiValid] = useState(true);
+
+
   const [formData, setFormData] = useState({
     customerMobile: '',
     customerName: '',
@@ -31,6 +35,15 @@ export const Details = () => {
       ...formData,
       [name]: value,
     });
+
+    if (name === 'customerMobile') {
+      setIsMobileValid(value.length === 10);
+    }
+
+    if (name === 'upiRef') {
+      setIsUpiValid(value.length === 12);
+    }
+  
   };
 //Open the Popup
   function openPopup(message) {
@@ -48,6 +61,18 @@ export const Details = () => {
   }
 
   const handleConfirmClick = () => {
+
+    if (!isMobileValid) {
+      var message = 'Invalid mobile number. Please enter at least 10 digits.';
+      openPopup(message);
+      return;
+    }
+
+    if (!isUpiValid) {
+      var message = 'Invalid UPI reference number. Please enter 12 digits.';
+      openPopup(message);
+      return;
+    }
 
     if (!formData.customerMobile || !formData.customerName) {
       var message = 'Please fill in both customer name and mobile number.';
@@ -150,13 +175,15 @@ export const Details = () => {
             <div>
               <label className='lab' htmlFor="customermobile"> Customer's Mobile</label>
               <input
-                type="number"
-                name="customerMobile"
-                id="customerMobile"
-                placeholder="Customer's Mobile"
-                value={formData.customerMobile}
-                onChange={handleInputChange}
-              />
+  type="number"
+  name="customerMobile"
+  id="customerMobile"
+  placeholder="Customer's Mobile"
+  value={formData.customerMobile}
+  onChange={handleInputChange}
+  className={isMobileValid ? '' : 'invalid'}
+/>
+
             </div>
 
             <div>
@@ -192,26 +219,30 @@ export const Details = () => {
   >
     <option value="UPI">UPI</option>
     <option value="Cash">Cash</option>
+    <option value="Comp">Complimentary</option>
   </select>
   </div>
   </div>
 
           <br />
-          <div className={formData.paymentMethod === 'Cash' ? 'scanner hidden' : 'scanner'}>
+          <div className={formData.paymentMethod === 'Cash' || formData.paymentMethod === 'Comp'? 'scanner hidden' : 'scanner' }>
             <h3>Scan & Pay!</h3>
             <img width="300px" height="450px" src="qrcode.jpeg" alt="" />
             <br />
             <br />
             <div>
               <label className='lab' htmlFor="customername"> UPI Ref. No</label>
-              <input
-                type="number"
-                name="upiRef"
-                id="upiRef"
-                placeholder="UPI Ref. No"
-                value={formData.upiRef}
-                onChange={handleInputChange}
-              />
+      
+<input
+  type="number"
+  name="upiRef"
+  id="upiRef"
+  placeholder="UPI Ref. No"
+  value={formData.upiRef}
+  onChange={handleInputChange}
+  className={isUpiValid ? '' : 'invalid'}
+/>
+
             </div>
           </div>
 
