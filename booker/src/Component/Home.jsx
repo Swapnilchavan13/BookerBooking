@@ -167,7 +167,7 @@ const slidePrev = () => {
   return (
     <div className="home-container">
       <div className='maindiv'>
-        <img src="https://cinemass.vercel.app/_next/static/media/cinema-logo.a5a66603.svg" alt="" />
+        <img src="https://i.postimg.cc/6QfKJ4Qc/cinemasslogo.png" alt="" />
 
         <Link to="/login">
           <button className='logoutbtn' onClick={onLogout}>Logout</button>

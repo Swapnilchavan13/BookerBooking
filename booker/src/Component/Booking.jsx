@@ -71,33 +71,30 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
   // };
 
   // Open the custom popup
-function openPopup(message) {
-  var popup = document.getElementById('customPopup');
-  var popupMessage = document.getElementById('popupMessage');
-  popup.style.display = 'block';
-  popupMessage.textContent = message;
-}
-
-// Close the custom popup
-function closePopup() {
-  var popup = document.getElementById('customPopup');
-  popup.style.display = 'none';
-    navigate('/details');
-}
-
-// Usage in your BookTicket function
-const BookTicket = () => {
-  if (selectedSeats.length > 0 && showtime) {
-    var message = `Welcome to ${user.name}! We are excited to host you for the screening of ${selectedMovie} on ${selectedDate} at ${showtime}. Your reservation includes the following selected seats: ${selectedSeats}.`;
-    openPopup(message);
-    localStorage.setItem('data', JSON.stringify(data));
-  } else {
-    openPopup('Please select Showtime.');
+  function openPopup(message) {
+    var popup = document.getElementById('customPopup');
+    var popupMessage = document.getElementById('popupMessage');
+    popup.style.display = 'block';
+    popupMessage.textContent = message;
   }
-};
 
+  // Close the custom popup
+  function closePopup() {
+    var popup = document.getElementById('customPopup');
+    popup.style.display = 'none';
+    navigate('/details');
+  }
 
-
+  // Usage in your BookTicket function
+  const BookTicket = () => {
+    if (selectedSeats.length > 0 && showtime) {
+      var message = `Welcome to ${user.name}! We are excited to host you for the screening of ${selectedMovie} on ${selectedDate} at ${showtime}. Your reservation includes the following selected seats: ${selectedSeats}.`;
+      openPopup(message);
+      localStorage.setItem('data', JSON.stringify(data));
+    } else {
+      openPopup('Please select Showtime.');
+    }
+  };
 
   return (
     <div className="booking-system">
@@ -120,7 +117,7 @@ const BookTicket = () => {
           <p>Available Seats</p>
         </div>
         <br />
-        <div id="scr">Screen</div> 
+        <div id="scr">Screen</div>
         <br />
         {formatted.map(([row, count]) => (
           <div key={row} id='srow' className="seat-row">
@@ -159,7 +156,6 @@ const BookTicket = () => {
           <div>Rs. {selectedSeats.length * 100} /-</div>
         </div>
       </div>
-      
 
       <button
         className="bookbutton"

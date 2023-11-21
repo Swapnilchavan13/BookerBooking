@@ -172,6 +172,7 @@ button:hover {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
+  width: 300px;
 }
 
 .close {
