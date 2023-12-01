@@ -235,6 +235,7 @@ const slidePrev = () => {
                   (showtime === "9:00 AM" && selectedDate === formattedToday && 10 <= currTime) ||
                   (showtime === "12:00 PM" && selectedDate === formattedToday && 13 <= currTime) ||
                   (showtime === "3:00 PM" && selectedDate === formattedToday && 16 <= currTime) ||
+                  (showtime === "4:00 PM" && selectedDate === formattedToday && 17 <= currTime) ||
                   (showtime === "6:00 PM" && selectedDate === formattedToday && 19 <= currTime) ||
                   (showtime === "9:00 PM" && selectedDate === formattedToday && 22 <= currTime);
 
