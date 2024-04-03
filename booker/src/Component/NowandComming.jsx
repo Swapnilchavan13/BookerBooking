@@ -5,7 +5,7 @@ import '../Styles/now.css';
 
 export const NowandComming = ({ user, onLogout }) => {
 
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true);
   const [moviee, setMovie] = useState([]);
   const [nowShowingClicked, setNowShowingClicked] = useState(true);
   const [comingSoonClicked, setComingSoonClicked] = useState(false);
@@ -47,7 +47,6 @@ export const NowandComming = ({ user, onLogout }) => {
     // You can also navigate to a different page if needed
     // Example: history.push('/booking');
   };
-  
   
 
   return (

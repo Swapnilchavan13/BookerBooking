@@ -41,14 +41,14 @@ export const Login = () => {
     setAuthenticated(true);
 
     try {
-      const response = await axios.get('http://62.72.59.146:3005/theatredata');
+      const response = await axios.get('http://localhost:3005/theatredata');
       const validUser = response.data.find(
         (user) => user.loginid === loginId && user.password === password
       );
 
       if (validUser) {
         setUser(validUser); // Pass the user data to the Home component
-        navigate('/userslogin');
+        navigate('/home');
         // Store authentication state and user data in localStorage
         localStorage.setItem('authenticated', 'true');
         localStorage.setItem('user', JSON.stringify(validUser));

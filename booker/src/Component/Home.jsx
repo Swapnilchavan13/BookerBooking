@@ -26,7 +26,7 @@ export const Home = ({ user, onLogout }) => {
 
   useEffect(() => {
     // Fetch data from your API endpoint
-    fetch('http://62.72.59.146:3005/moviedata')
+    fetch('http://localhost:3005/moviedata')
       .then((response) => response.json())
       .then((data) => {
         setMovie(data);
@@ -44,11 +44,11 @@ export const Home = ({ user, onLogout }) => {
     }
 
     // Fetch data from your API endpoint
-    fetch('http://62.72.59.146:3005/allocatedata')
+    fetch('http://localhost:3005/allocatedata')
       .then((response) => response.json())
       .then((data) => {
         // Filter the data based on user.name
-        const filteredData = data.filter((item) => item.theatreName === user.name);
+        const filteredData = data.filter((item) => item.theatreId === user._id);
         setMovieData(filteredData);
 
         // Set the selectedDate to the first available date
@@ -205,15 +205,14 @@ const slidePrev = () => {
                         {movieName}
                         {moviee.map((item, index) => (
                           <div key={index} className="movie-item">
-                            {item.moviename === movieName && (
+                            {item.movieName === movieName && (
                               <div>
-                                <img className='img' width="80px" height="140px" src={item.poster} alt={item.name} />
+                                <img className='img' width="80px" height="140px" src={item.posterImage} alt={item.movieName} />
                               </div>
                             )}
                           </div>
                         ))}
                       </div>
-
                     </div>
                   );
                 })}
@@ -230,32 +229,32 @@ const slidePrev = () => {
           <div className="showdiv">
             {filteredMovies
               .find((movie) => movie.date === selectedDate)
-              .movieData[selectedMovie].map((showtime) => {
+              .movieData[selectedMovie].map((showTime) => {
                 const isDisabled =
-                  (showtime === "9:00 AM" && selectedDate === formattedToday && 10 <= currTime) ||
-                  (showtime === "12:00 PM" && selectedDate === formattedToday && 13 <= currTime) ||
-                  (showtime === "3:00 PM" && selectedDate === formattedToday && 16 <= currTime) ||
-                  (showtime === "4:00 PM" && selectedDate === formattedToday && 17 <= currTime) ||
-                  (showtime === "6:00 PM" && selectedDate === formattedToday && 19 <= currTime) ||
-                  (showtime === "9:00 PM" && selectedDate === formattedToday && 22 <= currTime);
+                  (showTime === "9:00 AM" && selectedDate === formattedToday && 10 <= currTime) ||
+                  (showTime === "12:00 PM" && selectedDate === formattedToday && 13 <= currTime) ||
+                  (showTime === "3:00 PM" && selectedDate === formattedToday && 16 <= currTime) ||
+                  (showTime === "4:00 PM" && selectedDate === formattedToday && 17 <= currTime) ||
+                  (showTime === "6:00 PM" && selectedDate === formattedToday && 19 <= currTime) ||
+                  (showTime === "9:00 PM" && selectedDate === formattedToday && 22 <= currTime);
 
                   if (!isDisabled && selectedShowtime === null) {
                   // Set the first available non-disabled showtime as the default
-                  handleShowtimeSelect(showtime); 
+                  handleShowtimeSelect(showTime); 
                 }
 
                 return (
-                  <div key={showtime}>
+                  <div key={showTime}>
                     <input
                       type="radio"
-                      id={showtime}
+                      id={showTime}
                       name="showtime"
-                      value={showtime}
-                      checked={selectedShowtime === showtime}
-                      onChange={() => handleShowtimeSelect(showtime)}
+                      value={showTime}
+                      checked={selectedShowtime === showTime}
+                      onChange={() => handleShowtimeSelect(showTime)}
                       disabled={isDisabled}
                     />
-                    <label htmlFor={showtime}>{showtime}</label>
+                    <label htmlFor={showTime}>{showTime}</label>
                   </div>
                 );
               })}

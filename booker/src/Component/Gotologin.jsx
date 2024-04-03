@@ -14,7 +14,7 @@ export const Gotologin = () => {
         नया अन्दाज़।</h1>
       <br />
       <br />
-      <Link to="/login">
+      <Link to="/home">
         <button>
           Go to Login Page</button>
       </Link>

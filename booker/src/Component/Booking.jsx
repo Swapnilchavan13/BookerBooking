@@ -35,7 +35,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
   const bookername = localStorage.getItem('bookerusers')
 
   useEffect(() => {
-    fetch('http://62.72.59.146:3005/bookingdata')
+    fetch('http://localhost:3005/bookingdata')
       .then((response) => response.json())
       .then((data) => setApiData(data))
       .catch((error) => console.error('Error fetching data:', error));
@@ -52,11 +52,12 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
   };
 
   const data = {
-    booker: bookername,
-    tname: user.name,
-    mname: selectedMovie,
-    sdate: selectedDate,
-    showtime: showtime,
+    theatreId: user._id,
+    screenId: user.theaterScreens,
+    theatreName: user.theatreName,
+    movieName: selectedMovie,
+    showDate: selectedDate,
+    showTime: showtime,
     seats: selectedSeats.sort(),
   };
 
@@ -126,10 +127,10 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
               const seatNumberStr = row + (seatNumber + 1);
               const isBooked = selectedSeats.includes(seatNumberStr);
               const isSaved = apiData.some((booking) =>
-                booking.tname === user.name &&
-                booking.sdate === selectedDate &&
-                booking.mname === selectedMovie &&
-                booking.showtime === showtime &&
+                booking.theatreName === user.theatreName &&
+                booking.showDate === selectedDate &&
+                booking.movieName === selectedMovie &&
+                booking.showTime === showtime &&
                 booking.seats.includes(seatNumberStr)
               );
 
