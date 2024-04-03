@@ -26,7 +26,7 @@ export const Home = ({ user, onLogout }) => {
 
   useEffect(() => {
     // Fetch data from your API endpoint
-    fetch('http://localhost:3005/moviedata')
+    fetch('http://62.72.59.146:3005/moviedata')
       .then((response) => response.json())
       .then((data) => {
         setMovie(data);
@@ -44,7 +44,7 @@ export const Home = ({ user, onLogout }) => {
     }
 
     // Fetch data from your API endpoint
-    fetch('http://localhost:3005/allocatedata')
+    fetch('http://62.72.59.146:3005/allocatedata')
       .then((response) => response.json())
       .then((data) => {
         // Filter the data based on user.name

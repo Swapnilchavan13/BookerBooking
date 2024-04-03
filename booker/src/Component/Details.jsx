@@ -50,7 +50,7 @@ export const Details = () => {
         ...formData,
       };
 
-      fetch('http://localhost:3005/bookingdata', {
+      fetch('http://62.72.59.146:3005/bookingdata', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

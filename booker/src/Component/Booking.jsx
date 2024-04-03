@@ -35,7 +35,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
   const bookername = localStorage.getItem('bookerusers')
 
   useEffect(() => {
-    fetch('http://localhost:3005/bookingdata')
+    fetch('http://62.72.59.146:3005/bookingdata')
       .then((response) => response.json())
       .then((data) => setApiData(data))
       .catch((error) => console.error('Error fetching data:', error));
