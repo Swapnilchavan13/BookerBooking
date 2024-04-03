@@ -173,7 +173,7 @@ const slidePrev = () => {
           <button className='logoutbtn' onClick={onLogout}>Logout</button>
         </Link>
       </div>
-      <h4>Location: {user.location}</h4>
+      <h4>Location: {user.theatreCity}</h4>
       <h3>Select a Date: {selectedDate}</h3>
      <div className="date-buttons">
       <button id='slidebtn' onClick={slidePrev}>{"◀"}</button>

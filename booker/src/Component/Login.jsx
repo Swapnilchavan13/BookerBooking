@@ -15,7 +15,7 @@ export const Login = () => {
 
   // Fetch movie data from the API
   useEffect(() => {
-    axios.get('http://62.72.59.146:3005/moviedata')
+    axios.get('http://localhost:3005/moviedata')
       .then((response) => {
         setMovies(response.data);
       })
@@ -43,8 +43,11 @@ export const Login = () => {
     try {
       const response = await axios.get('http://localhost:3005/theatredata');
       const validUser = response.data.find(
-        (user) => user.loginid === loginId && user.password === password
+        (user) => user.loginId === loginId && user.password === password
       );
+
+      // console.log(user.loginId )
+      // console.log(user.password)
 
       if (validUser) {
         setUser(validUser); // Pass the user data to the Home component

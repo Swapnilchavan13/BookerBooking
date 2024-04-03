@@ -52,6 +52,7 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
   };
 
   const data = {
+    userId: user.loginId,
     theatreId: user._id,
     screenId: user.theaterScreens,
     theatreName: user.theatreName,
@@ -60,16 +61,6 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
     showTime: showtime,
     seats: selectedSeats.sort(),
   };
-
-  // const BookTicket = () => {
-  //   if (selectedSeats.length > 0 && showtime) {
-  //     alert(`Welcome to ${user.name}! We are excited to host you for the screening of ${selectedMovie} on ${selectedDate} at ${showtime}. Your reservation includes the following selected seats: ${selectedSeats}.`);
-  //     localStorage.setItem('data', JSON.stringify(data));
-  //     navigate('/details');
-  //   } else {
-  //     alert('Please select Showtime.');
-  //   }
-  // };
 
   // Open the custom popup
   function openPopup(message) {
