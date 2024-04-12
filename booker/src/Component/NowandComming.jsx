@@ -43,9 +43,6 @@ export const NowandComming = ({ user, onLogout }) => {
   const Bookhandle = (movieName) => {
     // Save the selected movie name in localStorage
     localStorage.setItem('selMovie', movieName);
-  
-    // You can also navigate to a different page if needed
-    // Example: history.push('/booking');
   };
   
 
@@ -85,10 +82,10 @@ export const NowandComming = ({ user, onLogout }) => {
             {moviee.map((item, index) => (
               <div key={index} className="movie-item">
                 <div className='imgdiv'>
-                  <h3>{item.moviename}</h3>
-                  <img src={item.poster} alt={item.name} />
+                  <h3>{item.movieName}</h3>
+                  <img src={item.posterImage} alt={item.name} />
                   <Link to="/home">
-                  <button onClick={() => Bookhandle(item.moviename)}>Book Now</button>
+                  <button onClick={() => Bookhandle(item.movieName)}>Book Now</button>
 
                   </Link>
                 </div>
