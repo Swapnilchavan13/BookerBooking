@@ -86,7 +86,6 @@ export const NowandComming = ({ user, onLogout }) => {
                   <img src={item.posterImage} alt={item.name} />
                   <Link to="/home">
                   <button onClick={() => Bookhandle(item.movieName)}>Book Now</button>
-
                   </Link>
                 </div>
                 <br />

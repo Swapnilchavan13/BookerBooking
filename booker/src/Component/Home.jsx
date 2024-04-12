@@ -159,7 +159,7 @@ const slidePrev = () => {
   let mm = today.getMonth() + 1; // Months start at 0!
   let dd = today.getDate();
   if (dd < 10) dd =  dd;
-  if (mm < 10) mm = '0' + mm;
+  if (mm < 10) mm =  mm;
   const formattedToday = mm + '/' + dd + '/' + yyyy;
   // console.log(moviee)
   // console.log(selectedDate, formattedToday, currTime)
