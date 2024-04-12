@@ -42,14 +42,11 @@ export const Booking = ({ selectedMovie, movie, formatted, user, selectedDate, s
   }, []);
 
   const handleSeatSelect = (seatNumber) => {
-    if (selectedSeats.includes(seatNumber)) {
-      // If the seat is already selected, deselect it
-      setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
-    } else {
-      // If the seat is not selected, select it
-      setSelectedSeats([...selectedSeats, seatNumber]);
-    }
+    // Deselect all previously selected seats
+    const newSelectedSeats = [seatNumber];
+    setSelectedSeats(newSelectedSeats);
   };
+  
 
   const data = {
     userId: user.loginId,
