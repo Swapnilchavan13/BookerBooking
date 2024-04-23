@@ -46,13 +46,13 @@ export const Booking = ({
   const bookername = localStorage.getItem('bookerusers');
 
   useEffect(() => {
-    fetch('http://localhost:3005/bookingdata')
+    fetch('http://62.72.59.146:3005/bookingdata')
       .then((response) => response.json())
       .then((data) => setApiData(data))
       .catch((error) => console.error('Error fetching data:', error));
 
     // Fetch user's bookings
-    fetch(`http://localhost:3005/bookingdata?userId=${user.loginId}`)
+    fetch(`http://62.72.59.146:3005/bookingdata?userId=${user.loginId}`)
       .then((response) => response.json())
       .then((data) => setUserBookings(data))
       .catch((error) => console.error('Error fetching user bookings:', error));
@@ -78,7 +78,7 @@ export const Booking = ({
 
   const cancelBooking = async (bookingId, canceledSeats) => {
     try {
-      const response = await fetch(`http://localhost:3005/bookingdata/${bookingId}`, {
+      const response = await fetch(`http://62.72.59.146:3005/bookingdata/${bookingId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
