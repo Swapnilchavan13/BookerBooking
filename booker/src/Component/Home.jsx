@@ -48,9 +48,13 @@ export const Home = ({ user, onLogout }) => {
       .then((response) => response.json())
       .then((data) => {
         // Filter the data based on user.name
-        const filteredData = data.filter((item) => item.theatreId === user._id);
-        setMovieData(filteredData);
+        const filteredData = data.filter((item) => 
+          item.matchId === user._id
+        // console.log(item.matchId, user._id)
 
+      );
+        setMovieData(filteredData);
+        
         // Set the selectedDate to the first available date
         const firstAvailableDate = filteredData.find((movie) => new Date(movie.date) >= currentDate);
         

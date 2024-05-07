@@ -27,8 +27,6 @@ const Seat = ({ seatNumber, isSelected, isBooked, isSaved, isCancel, onSelect })
   );
 };
 
-
-
 export const Booking = ({
   selectedMovie,
   movie,
@@ -65,8 +63,9 @@ export const Booking = ({
   };
 
   const data = {
-    userId: user.loginId,
-    theatreId: user._id,
+    userId: 1,
+    cardId: 537923476,
+    theatreId: user.theatreId,
     screenId: user.theaterScreens,
     theatreName: user.theatreName,
     movieName: selectedMovie,

@@ -46,8 +46,7 @@ export const Details = () => {
     if (savedData) {
       // Combine form data with saved data
       const bookingData = {
-        ...savedData,
-        ...formData,
+        ...savedData
       };
 
       fetch('http://62.72.59.146:3005/bookingdata', {
@@ -63,6 +62,7 @@ export const Details = () => {
             var message = 'Success: Tickets Booked successfully.';
             openPopup(message);
 
+            console.log(bookingData)
             setIsModalOpen(true);
           } else {
              message = 'Sorry Seats are already booked'
